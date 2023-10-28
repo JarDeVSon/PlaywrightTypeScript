@@ -7,6 +7,6 @@ test('test using npx playwright codegen feature', async ({ page }) => {
   await page.getByLabel('Email address *', { exact: true }).press('Tab');
   await page.locator('#reg_password').click();
   await page.locator('#reg_password').fill('Password@LL$4312121212');
-  await page.locator('button[name="register"]').click();
+  await page.locator('input[name="register"]').click();
   await page.getByRole('link', { name: 'Sign out' }).click();
 });
