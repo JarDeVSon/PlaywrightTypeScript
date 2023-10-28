@@ -51,7 +51,7 @@ npx playwright test
 And check out the following files:
   - .\tests\example.spec.ts - Example end-to-end test
   - .\tests-examples\demo-todo-app.spec.ts - Demo Todo App end-to-end tests
-  - .\playwright.config.js - Playwright Test configuration
+  - .\playwright.config.ts - Playwright Test configuration
     
 In my case, check out the following files:
   - .\tests\api_test.spec.ts - API test
