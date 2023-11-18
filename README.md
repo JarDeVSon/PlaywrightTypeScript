@@ -23,7 +23,8 @@ Install the Following Libraries using the command Line:
 - Install Playwright browsers (default is true)
   
 Install system dependencies, browsers, and OS dependencies with a single command:
-`npx playwright install --with-deps`
+
+- `npx playwright install --with-deps`
 
 ## Running the tests
 
