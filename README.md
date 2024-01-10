@@ -55,7 +55,14 @@ And check out the following files:
     
 In my case, check out the following files:
   - .\tests\api_test.spec.ts - API test
-  - .\tests\web_test.spec.ts - Web test using page objects model pattern (POM)
+  - .\tests\web_test.spec.ts - Web test using page objects model pattern (POM), check it out below:
+
+| Package  | Responsibility                                                          |
+|----------|-------------------------------------------------------------------------|
+| fixtures | responsible for managing test data                                      |
+| locators | responsible for identifying web elements                                |
+| pages    | responsible for page actions (navigation, (fills, types), clicks, etc.) |
+| tests    | responsible for executing the test suite                                |
 ___
 
 Made with ❤️ by [Jardeson Santos](https://github.com/JarDeVSon). [Meu Linkedin](https://www.linkedin.com/in/jardeson-santosqa).
