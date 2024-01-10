@@ -28,6 +28,16 @@ Install system dependencies, browsers, and OS dependencies with a single command
 
 ## Project Structure: Page Object Model and Single Responsability Principle Pattern:
 
+And check out the following files:
+  - .\tests\example.spec.ts - Example end-to-end test
+  - .\tests-examples\demo-todo-app.spec.ts - Demo Todo App end-to-end tests
+  - .\playwright.config.ts - Playwright Test configuration
+    
+In my case, check out the following files:
+  - .\tests\api_test.spec.ts - API test
+  - .\tests\web_test.spec.ts - Web test using page objects model pattern (POM), check it out below:
+
+
 | Package  | Responsibility                                                          |
 |----------|-------------------------------------------------------------------------|
 | fixtures | responsible for managing test data                                      |
@@ -66,16 +76,6 @@ To see the status report, you can run the command:
 ```
 npx playwright show-report
 ```
-
-And check out the following files:
-  - .\tests\example.spec.ts - Example end-to-end test
-  - .\tests-examples\demo-todo-app.spec.ts - Demo Todo App end-to-end tests
-  - .\playwright.config.ts - Playwright Test configuration
-    
-In my case, check out the following files:
-  - .\tests\api_test.spec.ts - API test
-  - .\tests\web_test.spec.ts - Web test using page objects model pattern (POM), check it out below:
-
 
 ___
 
