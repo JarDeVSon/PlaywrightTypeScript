@@ -18,7 +18,7 @@ test.describe('Suite de testes API Gorest', async () => {
         const response = await request.post('https://gorest.co.in/public/v2/users', {
             data: {
                 "name": "Repeteco1234qwqwqw",
-                "email": "letsgo121@gmail.com",
+                "email": "letsgo121444@gmail.com",
                 "gender": "male",
                 "status": "active"
             },
@@ -55,7 +55,7 @@ test.describe('Suite de testes API Gorest', async () => {
         const response = await request.put(`https://gorest.co.in/public/v2/users/${id}`, {
             data: {
                 "name": "RepetecoPUT4qwqqw1",
-                "email": "letsgo121@gmail.com",
+                "email": "letsgo12231@gmail.com",
                 "gender": "male",
                 "status": "active"
             },
