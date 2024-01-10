@@ -1,7 +1,7 @@
 import { test, expect } from '@playwright/test';
 
 let id: any;
-let token = '3177007a85de886276f0ac7c6461465d4aa8269c8f1a4fae0dba09754fab28ae';
+let token = '0fc3577c172bbb4ed577ddd04c71b09fe7e066549e66f24cc3decc87fd57cf21';
 
 test.describe('Suite de testes API Gorest', async () => {
 
@@ -17,7 +17,7 @@ test.describe('Suite de testes API Gorest', async () => {
     test('POST API Request', async ({ request }) => {
         const response = await request.post('https://gorest.co.in/public/v2/users', {
             data: {
-                "name": "Repeteco123qwqwqw",
+                "name": "Repeteco1234qwqwqw",
                 "email": "letsgo121@gmail.com",
                 "gender": "male",
                 "status": "active"
@@ -54,7 +54,7 @@ test.describe('Suite de testes API Gorest', async () => {
     test('PUT API Request', async ({ request }) => {
         const response = await request.put(`https://gorest.co.in/public/v2/users/${id}`, {
             data: {
-                "name": "RepetecoPUTqwqqw1",
+                "name": "RepetecoPUT4qwqqw1",
                 "email": "letsgo121@gmail.com",
                 "gender": "male",
                 "status": "active"
