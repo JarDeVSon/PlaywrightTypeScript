@@ -1,6 +1,6 @@
 {
-    "data_web": {
-        "username": "tomsmith",
-        "password": "SuperSecretPassword!"
-    }
+  "data_web": {
+    "username": "tomsmith",
+    "password": "SuperSecretPassword!"
+  }
 }
