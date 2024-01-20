@@ -10,7 +10,7 @@ test.describe("Suite de testes API Gorest", async () => {
 
     console.log(response);
     console.log("Status obtido: " + response.status());
-    expect(200).toEqual(response.status());
+    expect(response.status()).toBe(200);
   });
 
   test("POST API Request", async ({ request }) => {
