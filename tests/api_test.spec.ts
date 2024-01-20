@@ -25,12 +25,12 @@ test.describe("Suite de testes API Gorest", async () => {
       }
     );
 
-    console.log(response);
-    console.log(response.status());
+    console.log("Response obtido: " + response);
+    console.log("Status obtido: " + response.status());
     expect(response.status()).toBe(201);
     let responseBody = await response.json();
     id = responseBody.id;
-    console.log(id);
+    console.log("ID obtido: " + id);
   });
 
   test("GET ONE SINGLE API Request", async ({ request }) => {
@@ -44,8 +44,8 @@ test.describe("Suite de testes API Gorest", async () => {
       }
     );
 
-    console.log(response);
-    console.log(response.status());
+    console.log("Response obtido: " + response);
+    console.log("Status obtido: " + response.status());
     expect(response.status()).toBe(200);
   });
   test("PUT API Request", async ({ request }) => {
@@ -65,8 +65,8 @@ test.describe("Suite de testes API Gorest", async () => {
       }
     );
 
-    console.log(response);
-    console.log(response.status());
+    console.log("Response obtido: " + response);
+    console.log("Status obtido: " + response.status());
     expect(response.status()).toBe(200);
   });
 
@@ -80,8 +80,8 @@ test.describe("Suite de testes API Gorest", async () => {
         },
       }
     );
-    console.log(response);
-    console.log(response.status());
+    console.log("Response obtido: " + response);
+    console.log("Status obtido: " + response.status());
     expect(response.status()).toBe(204);
   });
 });
