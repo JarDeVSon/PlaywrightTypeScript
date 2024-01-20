@@ -30,6 +30,7 @@ test.describe("Suite de testes API Gorest", async () => {
     expect(response.status()).toBe(201);
     let responseBody = await response.json();
     id = responseBody.id;
+    console.log(id);
   });
 
   test("GET ONE SINGLE API Request", async ({ request }) => {
