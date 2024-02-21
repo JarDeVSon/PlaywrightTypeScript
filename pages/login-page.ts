@@ -18,4 +18,14 @@ export class LoginPage {
     await loginLocator.password.fill(password);
     await loginLocator.login_button.click();
   }
+  async username(username){
+    await loginLocator.username.fill(username)
+  }
+  async password(password){
+    await loginLocator.password.fill(password)
+  }
+  async btn_login(){
+    await loginLocator.login_button.click()
+  }
+  
 }
