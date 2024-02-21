@@ -13,11 +13,7 @@ export class LoginPage {
   async goto_login() {
     await loginLocator.base_url;
   }
-  async login(username, password) {
-    await loginLocator.username.fill(username);
-    await loginLocator.password.fill(password);
-    await loginLocator.login_button.click();
-  }
+  
   async username(username){
     await loginLocator.username.fill(username)
   }
@@ -27,5 +23,5 @@ export class LoginPage {
   async btn_login(){
     await loginLocator.login_button.click()
   }
-  
+
 }
