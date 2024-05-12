@@ -11,7 +11,7 @@
     "grepInvert": null,
     "maxFailures": 0,
     "metadata": {
-      "actualWorkers": 1
+      "actualWorkers": 2
     },
     "preserveOutput": "always",
     "reporter": [
@@ -54,6 +54,221 @@
   },
   "suites": [
     {
+      "title": "api_test.spec.ts",
+      "file": "api_test.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [],
+      "suites": [
+        {
+          "title": "Suite de testes API Gorest",
+          "file": "api_test.spec.ts",
+          "line": 7,
+          "column": 6,
+          "specs": [
+            {
+              "title": "GET ALL API Request",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "status": "passed",
+                      "duration": 449,
+                      "errors": [],
+                      "stdout": [
+                        {
+                          "text": "APIResponse: 200 OK\n  Date: Sun, 12 May 2024 03:05:48 GMT\n  Content-Type: application/json; charset=utf-8\n  Transfer-Encoding: chunked\n  Connection: close\n  Cache-Control: max-age=0, private, must-revalidate\n  etag: W/\"7b6d71269bc5703b59fde58b39e03de1\"\n  referrer-policy: strict-origin-when-cross-origin\n  vary: Origin\n  x-content-type-options: nosniff\n  x-download-options: noopen\n  x-frame-options: SAMEORIGIN\n  x-links-current: https://gorest.co.in/public/v2/users?page=1\n  x-links-next: https://gorest.co.in/public/v2/users?page=2\n  x-links-previous: \n  x-pagination-limit: 10\n  x-pagination-page: 1\n  x-pagination-pages: 280\n  x-pagination-total: 2800\n  x-permitted-cross-domain-policies: none\n  x-request-id: b5c23079-faf1-4f3a-8711-e1d6011fb7b1\n  x-runtime: 0.051361\n  x-xss-protection: 0\n  CF-Cache-Status: DYNAMIC\n  Report-To: {\"endpoints\":[{\"url\":\"https:\\/\\/a.nel.cloudflare.com\\/report\\/v4?s=YJIYefwfX1V9f09qcahT76duA66PGHMlRTi2HIF2NUIEo0ShB6hpQKAEAB5Hf4tf%2BmpiMOQuzm9EQY89iDBcJMTMuvHtpa8EjVjKHfcceR7JU2T1%2BwzigZcStmBwLTc%3D\"}],\"group\":\"cf-nel\",\"max_age\":604800}\n  NEL: {\"success_fraction\":0,\"report_to\":\"cf-nel\",\"max_age\":604800}\n  Server: cloudflare\n  CF-RAY: 8827306b791f1726-SJC\n  Content-Encoding: br\n  alt-svc: h3=\":443\"; ma=86400\n"
+                        },
+                        {
+                          "text": "Status obtido: 200\n"
+                        }
+                      ],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2024-05-12T03:05:47.955Z",
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "d2364b4c486da1221490-fea1a9fb74b1b234c9bd",
+              "file": "api_test.spec.ts",
+              "line": 8,
+              "column": 7
+            },
+            {
+              "title": "POST API Request",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "status": "passed",
+                      "duration": 364,
+                      "errors": [],
+                      "stdout": [
+                        {
+                          "text": "APIResponse: 201 Created\n  Date: Sun, 12 May 2024 03:05:48 GMT\n  Content-Type: application/json; charset=utf-8\n  Content-Length: 110\n  Connection: close\n  Cache-Control: max-age=0, private, must-revalidate\n  etag: W/\"0356ffa5a07b638ed5495d163138c53c\"\n  location: https://gorest.co.in/public/v2/users/6903626\n  referrer-policy: strict-origin-when-cross-origin\n  vary: Origin\n  x-content-type-options: nosniff\n  x-download-options: noopen\n  x-frame-options: SAMEORIGIN\n  x-permitted-cross-domain-policies: none\n  x-ratelimit-limit: 90\n  x-ratelimit-remaining: 86\n  x-ratelimit-reset: 1\n  x-request-id: 648844ba-0c09-4b71-aa1b-925d9e7fa6c4\n  x-runtime: 0.076672\n  x-xss-protection: 0\n  CF-Cache-Status: DYNAMIC\n  Report-To: {\"endpoints\":[{\"url\":\"https:\\/\\/a.nel.cloudflare.com\\/report\\/v4?s=f2fwdCAnY5QCAo%2BDvAJu%2BsOi1tBKm0InlF%2BUOYK75g6CDT%2BKC1YpMslzeTnobpMzIdjQp7lP5FjczrMhsFUEoWtLfSJQVc7LEfYrXT%2FYajntX0D5Pg5BIfXdF9Ucoeg%3D\"}],\"group\":\"cf-nel\",\"max_age\":604800}\n  NEL: {\"success_fraction\":0,\"report_to\":\"cf-nel\",\"max_age\":604800}\n  Server: cloudflare\n  CF-RAY: 8827306dbd1d15f7-SJC\n  alt-svc: h3=\":443\"; ma=86400\n"
+                        },
+                        {
+                          "text": "Status obtido: 201\n"
+                        },
+                        {
+                          "text": "ID obtido: 6903626\n"
+                        }
+                      ],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2024-05-12T03:05:48.406Z",
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "d2364b4c486da1221490-d32afebea62226e4b575",
+              "file": "api_test.spec.ts",
+              "line": 16,
+              "column": 7
+            },
+            {
+              "title": "GET ONE SINGLE API Request",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "status": "passed",
+                      "duration": 858,
+                      "errors": [],
+                      "stdout": [
+                        {
+                          "text": "APIResponse: 200 OK\n  Date: Sun, 12 May 2024 03:05:49 GMT\n  Content-Type: application/json; charset=utf-8\n  Transfer-Encoding: chunked\n  Connection: close\n  Cache-Control: max-age=0, private, must-revalidate\n  etag: W/\"0356ffa5a07b638ed5495d163138c53c\"\n  referrer-policy: strict-origin-when-cross-origin\n  vary: Origin\n  x-content-type-options: nosniff\n  x-download-options: noopen\n  x-frame-options: SAMEORIGIN\n  x-permitted-cross-domain-policies: none\n  x-ratelimit-limit: 90\n  x-ratelimit-remaining: 89\n  x-ratelimit-reset: 1\n  x-request-id: 883552a5-05a9-46d3-ad7a-2a63d9555e32\n  x-runtime: 0.084046\n  x-xss-protection: 0\n  CF-Cache-Status: DYNAMIC\n  Report-To: {\"endpoints\":[{\"url\":\"https:\\/\\/a.nel.cloudflare.com\\/report\\/v4?s=2rgwF%2BqrEszV8hMVQHkNHENePVxXKjMHJ5X1w9QdKrD6v3ZNcfWkvuB42oYt3kAXyEkmqgpSIIiIvkC3yyPHV7HgqWElZpd9ponQ7D4r4hv%2Fh4Ruy8bDkayudOduCLo%3D\"}],\"group\":\"cf-nel\",\"max_age\":604800}\n  NEL: {\"success_fraction\":0,\"report_to\":\"cf-nel\",\"max_age\":604800}\n  Server: cloudflare\n  CF-RAY: 8827306ff92d1590-SJC\n  Content-Encoding: br\n  alt-svc: h3=\":443\"; ma=86400\n"
+                        },
+                        {
+                          "text": "Status obtido: 200\n"
+                        }
+                      ],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2024-05-12T03:05:48.772Z",
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "d2364b4c486da1221490-656f7f158c731a595e36",
+              "file": "api_test.spec.ts",
+              "line": 36,
+              "column": 7
+            },
+            {
+              "title": "PUT API Request",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "status": "passed",
+                      "duration": 381,
+                      "errors": [],
+                      "stdout": [
+                        {
+                          "text": "APIResponse: 200 OK\n  Date: Sun, 12 May 2024 03:05:50 GMT\n  Content-Type: application/json; charset=utf-8\n  Transfer-Encoding: chunked\n  Connection: close\n  Cache-Control: max-age=0, private, must-revalidate\n  etag: W/\"d9d31404b5a0da87f83fedd29225d8fc\"\n  referrer-policy: strict-origin-when-cross-origin\n  vary: Origin\n  x-content-type-options: nosniff\n  x-download-options: noopen\n  x-frame-options: SAMEORIGIN\n  x-permitted-cross-domain-policies: none\n  x-ratelimit-limit: 90\n  x-ratelimit-remaining: 89\n  x-ratelimit-reset: 2\n  x-request-id: 65d9489d-3375-44ec-9bc5-179b60fe139d\n  x-runtime: 0.087611\n  x-xss-protection: 0\n  CF-Cache-Status: DYNAMIC\n  Report-To: {\"endpoints\":[{\"url\":\"https:\\/\\/a.nel.cloudflare.com\\/report\\/v4?s=wqp1pzn9ut5XQcTeKmatT0WiB5oP%2FKNMau8OEVSf6JGIQTBhzu5PV04mbIGs%2BE8i43zLccHZsA5mJV%2B9%2FjrwhH8rcc%2Bcra1%2F6N%2BKrnBciayTQLibUAOM0z0yCSr6E%2FM%3D\"}],\"group\":\"cf-nel\",\"max_age\":604800}\n  NEL: {\"success_fraction\":0,\"report_to\":\"cf-nel\",\"max_age\":604800}\n  Server: cloudflare\n  CF-RAY: 88273075688a159e-SJC\n  Content-Encoding: br\n  alt-svc: h3=\":443\"; ma=86400\n"
+                        },
+                        {
+                          "text": "Status obtido: 200\n"
+                        }
+                      ],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2024-05-12T03:05:49.632Z",
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "d2364b4c486da1221490-bda8079ea4eddea8a8bf",
+              "file": "api_test.spec.ts",
+              "line": 51,
+              "column": 7
+            },
+            {
+              "title": "DELETE API Request",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "status": "passed",
+                      "duration": 398,
+                      "errors": [],
+                      "stdout": [
+                        {
+                          "text": "APIResponse: 204 No Content\n  Date: Sun, 12 May 2024 03:05:50 GMT\n  Connection: close\n  Cache-Control: no-cache\n  referrer-policy: strict-origin-when-cross-origin\n  vary: Origin\n  x-content-type-options: nosniff\n  x-download-options: noopen\n  x-frame-options: SAMEORIGIN\n  x-permitted-cross-domain-policies: none\n  x-ratelimit-limit: 90\n  x-ratelimit-remaining: 88\n  x-ratelimit-reset: 2\n  x-request-id: 52ff4498-fcef-45fe-9e00-c07ab94cfe18\n  x-runtime: 0.117816\n  x-xss-protection: 0\n  CF-Cache-Status: DYNAMIC\n  Report-To: {\"endpoints\":[{\"url\":\"https:\\/\\/a.nel.cloudflare.com\\/report\\/v4?s=q94goImCEmkZ0Cf1N%2FLGYB7VQBu0m58IhGnd4MGDgyf364DlaQgXtl%2B9xdRMDi9T1H0RQ1JzPVunHRmTizWshif3bdeXLhl4J8ALYE5VYScfIayrc%2Bj7GO6OXDzqKoE%3D\"}],\"group\":\"cf-nel\",\"max_age\":604800}\n  NEL: {\"success_fraction\":0,\"report_to\":\"cf-nel\",\"max_age\":604800}\n  Server: cloudflare\n  CF-RAY: 88273077be332544-SJC\n  alt-svc: h3=\":443\"; ma=86400\n"
+                        },
+                        {
+                          "text": "Status obtido: 204\n"
+                        }
+                      ],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2024-05-12T03:05:50.013Z",
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "d2364b4c486da1221490-5ed93e85e32f476dcdf9",
+              "file": "api_test.spec.ts",
+              "line": 73,
+              "column": 7
+            }
+          ]
+        }
+      ]
+    },
+    {
       "title": "web_test.spec.ts",
       "file": "web_test.spec.ts",
       "column": 0,
@@ -79,9 +294,9 @@
                   "projectName": "chromium",
                   "results": [
                     {
-                      "workerIndex": 0,
+                      "workerIndex": 1,
                       "status": "passed",
-                      "duration": 702,
+                      "duration": 1658,
                       "errors": [],
                       "stdout": [
                         {
@@ -90,7 +305,7 @@
                       ],
                       "stderr": [],
                       "retry": 0,
-                      "startTime": "2024-05-12T02:58:53.626Z",
+                      "startTime": "2024-05-12T03:05:47.966Z",
                       "attachments": []
                     }
                   ],
@@ -109,7 +324,7 @@
   ],
   "errors": [],
   "stats": {
-    "startTime": "2024-05-12T02:58:53.187Z",
-    "duration": 1542.635
+    "startTime": "2024-05-12T03:05:47.514Z",
+    "duration": 2909.728
   }
 }
