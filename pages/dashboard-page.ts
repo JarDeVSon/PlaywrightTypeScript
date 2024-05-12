@@ -2,6 +2,7 @@ import { Page } from "@playwright/test";
 import { DashboardLocator } from "../locators/dashboard-locator";
 
 let dashboardLocator;
+
 export class DashboardPage {
   page: Page;
 
