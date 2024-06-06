@@ -26,10 +26,10 @@ test.describe("Suite de testes Web - LoginPage", async () => {
     ).toHaveText(
       /Welcome to the Secure Area. When you are done click logout below./
     );
-    await page.getByRole("link", { name: "Logout" }).click();
   });
 
   test.afterEach("After Each Hooks", async ({ page }) => {
+    await page.screenshot({ path: `playwright-report/${test.info().title}.png` });
     await page.close();
   });
 });
