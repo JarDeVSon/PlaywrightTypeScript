@@ -31,6 +31,9 @@ export default defineConfig({
     baseURL: process.env.URL = 'https://the-internet.herokuapp.com',
 
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
+    launchOptions: {
+      slowMo: 100
+    },
     trace: 'on-first-retry',
     screenshot: 'on',
     video: 'on',
