@@ -29,7 +29,7 @@ test.describe("Suite de testes Web - LoginPage", async () => {
   });
 
   test.afterEach("After Each Hooks", async ({ page }) => {
-    await page.screenshot({ path: `playwright-report/${test.info().title}.png` });
+    await page.screenshot({ path: `playwright-report/${test.info().title}.png`, fullPage: true });
     await page.close();
   });
 });
