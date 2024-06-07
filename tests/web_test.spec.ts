@@ -6,15 +6,15 @@ import { LoginPage } from "../pages/login-page";
 let loginPage: LoginPage;
 let dashboardPage: DashboardPage;
 
-test.describe("Suite de testes Web - LoginPage", async () => {
+test.describe("Suite de testes Web - LoginPage - ", async () => {
   test.beforeEach("Before Each Hooks", async ({ page }) => {
+    console.log(test.info().title)
     loginPage = new LoginPage(page);
     dashboardPage = new DashboardPage(page);
     await loginPage.goto_login();
   });
 
   test("test login with successfully", async ({ page }) => {
-    console.log("test login with successfully");
     await loginPage.username(data_web.username)
     await loginPage.password(data_web.password);
     await loginPage.btn_login()
