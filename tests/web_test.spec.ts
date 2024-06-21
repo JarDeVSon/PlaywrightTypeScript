@@ -19,7 +19,7 @@ test.describe("Suite de testes Web - LoginPage - ", async () => {
     await loginPage.password(data_web.password);
     await loginPage.btn_login()
     await dashboardPage.headingSecureArea();
-    expect(
+    await expect(
       page.getByRole("heading", {
         name: "Welcome to the Secure Area. When you are done click logout below.",
       })
