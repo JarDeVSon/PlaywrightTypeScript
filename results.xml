@@ -81,11 +81,11 @@
                     {
                       "workerIndex": 0,
                       "status": "passed",
-                      "duration": 490,
+                      "duration": 497,
                       "errors": [],
                       "stdout": [
                         {
-                          "text": "APIResponse: 200 OK\n  Date: Fri, 21 Jun 2024 02:06:48 GMT\n  Content-Type: application/json; charset=utf-8\n  Transfer-Encoding: chunked\n  Connection: close\n  Cache-Control: max-age=0, private, must-revalidate\n  etag: W/\"b5492ff5936c934eac216e3625cfdbac\"\n  referrer-policy: strict-origin-when-cross-origin\n  vary: Origin\n  x-content-type-options: nosniff\n  x-download-options: noopen\n  x-frame-options: SAMEORIGIN\n  x-links-current: https://gorest.co.in/public/v2/users?page=1\n  x-links-next: https://gorest.co.in/public/v2/users?page=2\n  x-links-previous: \n  x-pagination-limit: 10\n  x-pagination-page: 1\n  x-pagination-pages: 294\n  x-pagination-total: 2931\n  x-permitted-cross-domain-policies: none\n  x-request-id: 356be993-3721-48c5-a806-74f3e86b3d9f\n  x-runtime: 0.051647\n  x-xss-protection: 0\n  CF-Cache-Status: DYNAMIC\n  Report-To: {\"endpoints\":[{\"url\":\"https:\\/\\/a.nel.cloudflare.com\\/report\\/v4?s=kXt%2BdI8xRK3uYgPRZbnpbWiGanLniISdc9s8Uo2pTGC2zX9qQI6vALKpQIG2xgkMDoxrQLbTmdZ0PbtCaYJ6DGm%2BTWZlDxL%2BQXDbDlCBaYhZXlol9k8ylbG661lcWSw%3D\"}],\"group\":\"cf-nel\",\"max_age\":604800}\n  NEL: {\"success_fraction\":0,\"report_to\":\"cf-nel\",\"max_age\":604800}\n  Server: cloudflare\n  CF-RAY: 897070ff892b16a6-SJC\n  Content-Encoding: br\n  alt-svc: h3=\":443\"; ma=86400\n"
+                          "text": "APIResponse: 200 OK\n  Date: Fri, 21 Jun 2024 02:08:53 GMT\n  Content-Type: application/json; charset=utf-8\n  Transfer-Encoding: chunked\n  Connection: close\n  Cache-Control: max-age=0, private, must-revalidate\n  etag: W/\"b5492ff5936c934eac216e3625cfdbac\"\n  referrer-policy: strict-origin-when-cross-origin\n  vary: Origin\n  x-content-type-options: nosniff\n  x-download-options: noopen\n  x-frame-options: SAMEORIGIN\n  x-links-current: https://gorest.co.in/public/v2/users?page=1\n  x-links-next: https://gorest.co.in/public/v2/users?page=2\n  x-links-previous: \n  x-pagination-limit: 10\n  x-pagination-page: 1\n  x-pagination-pages: 294\n  x-pagination-total: 2931\n  x-permitted-cross-domain-policies: none\n  x-request-id: e2b6b27e-594e-4db5-a39c-3d912fb88c1f\n  x-runtime: 0.043531\n  x-xss-protection: 0\n  CF-Cache-Status: DYNAMIC\n  Report-To: {\"endpoints\":[{\"url\":\"https:\\/\\/a.nel.cloudflare.com\\/report\\/v4?s=BP1NnQ5M3EfR7KbVxbMdD6FgctTdtoAo4mjHaMdQ1RmT%2FlpFeF00oHMippOrRhofIEoyh60zWggAI3LXfxBSHM72YSJjNCOchVohJ%2F6MqtRzTpUkeW%2FomoGPkexvV4g%3D\"}],\"group\":\"cf-nel\",\"max_age\":604800}\n  NEL: {\"success_fraction\":0,\"report_to\":\"cf-nel\",\"max_age\":604800}\n  Server: cloudflare\n  CF-RAY: 8970740e18fccf4d-SJC\n  Content-Encoding: br\n  alt-svc: h3=\":443\"; ma=86400\n"
                         },
                         {
                           "text": "Status obtido: 200\n"
@@ -93,7 +93,7 @@
                       ],
                       "stderr": [],
                       "retry": 0,
-                      "startTime": "2024-06-21T02:06:48.116Z",
+                      "startTime": "2024-06-21T02:08:53.336Z",
                       "attachments": []
                     }
                   ],
@@ -120,22 +120,22 @@
                     {
                       "workerIndex": 0,
                       "status": "passed",
-                      "duration": 422,
+                      "duration": 529,
                       "errors": [],
                       "stdout": [
                         {
-                          "text": "APIResponse: 201 Created\n  Date: Fri, 21 Jun 2024 02:06:49 GMT\n  Content-Type: application/json; charset=utf-8\n  Content-Length: 110\n  Connection: close\n  Cache-Control: max-age=0, private, must-revalidate\n  etag: W/\"09514412c3872866cb772d0b6536b804\"\n  location: https://gorest.co.in/public/v2/users/6974466\n  referrer-policy: strict-origin-when-cross-origin\n  vary: Origin\n  x-content-type-options: nosniff\n  x-download-options: noopen\n  x-frame-options: SAMEORIGIN\n  x-permitted-cross-domain-policies: none\n  x-ratelimit-limit: 90\n  x-ratelimit-remaining: 89\n  x-ratelimit-reset: 1\n  x-request-id: b019ab13-08bd-474b-a05e-9cd717b1c356\n  x-runtime: 0.091793\n  x-xss-protection: 0\n  CF-Cache-Status: DYNAMIC\n  Report-To: {\"endpoints\":[{\"url\":\"https:\\/\\/a.nel.cloudflare.com\\/report\\/v4?s=BLO6Vv9287bTzQL4OwpoAhHyXgowhFrPlbYApH9zuJrwxX3XaQ8bDqRtHT%2Beh%2BdIF9vtpgfyJt4a%2BfjsLEdnWDuPQoTaTqmOSyk0lzIKZAGmIXcrS30H%2Bkeza34WxfE%3D\"}],\"group\":\"cf-nel\",\"max_age\":604800}\n  NEL: {\"success_fraction\":0,\"report_to\":\"cf-nel\",\"max_age\":604800}\n  Server: cloudflare\n  CF-RAY: 89707101fa3bfb4c-SJC\n  alt-svc: h3=\":443\"; ma=86400\n"
+                          "text": "APIResponse: 201 Created\n  Date: Fri, 21 Jun 2024 02:08:54 GMT\n  Content-Type: application/json; charset=utf-8\n  Content-Length: 110\n  Connection: close\n  Cache-Control: max-age=0, private, must-revalidate\n  etag: W/\"e35d533e3b1f896f6213d97f041a64fe\"\n  location: https://gorest.co.in/public/v2/users/6974467\n  referrer-policy: strict-origin-when-cross-origin\n  vary: Origin\n  x-content-type-options: nosniff\n  x-download-options: noopen\n  x-frame-options: SAMEORIGIN\n  x-permitted-cross-domain-policies: none\n  x-ratelimit-limit: 90\n  x-ratelimit-remaining: 86\n  x-ratelimit-reset: 1\n  x-request-id: 1aac010f-c8e2-4768-961d-dc47d4eb8fba\n  x-runtime: 0.157261\n  x-xss-protection: 0\n  CF-Cache-Status: DYNAMIC\n  Report-To: {\"endpoints\":[{\"url\":\"https:\\/\\/a.nel.cloudflare.com\\/report\\/v4?s=zGaQw8Pl2%2BabjrNgcBeTgZPk3gIbj%2BGuMankrJMP7oXejNoSGFr3pjiayHR%2FI8s0NeqfypjS9%2BHdGmEzoKMu4nuv9wMbqAGEF18WLoKvr8s0n2U0Ng95zMOD%2BxO2HoE%3D\"}],\"group\":\"cf-nel\",\"max_age\":604800}\n  NEL: {\"success_fraction\":0,\"report_to\":\"cf-nel\",\"max_age\":604800}\n  Server: cloudflare\n  CF-RAY: 89707410ac6e17d1-SJC\n  alt-svc: h3=\":443\"; ma=86400\n"
                         },
                         {
                           "text": "Status obtido: 201\n"
                         },
                         {
-                          "text": "ID obtido: 6974466\n"
+                          "text": "ID obtido: 6974467\n"
                         }
                       ],
                       "stderr": [],
                       "retry": 0,
-                      "startTime": "2024-06-21T02:06:48.608Z",
+                      "startTime": "2024-06-21T02:08:53.836Z",
                       "attachments": []
                     }
                   ],
@@ -162,11 +162,11 @@
                     {
                       "workerIndex": 0,
                       "status": "passed",
-                      "duration": 381,
+                      "duration": 443,
                       "errors": [],
                       "stdout": [
                         {
-                          "text": "APIResponse: 200 OK\n  Date: Fri, 21 Jun 2024 02:06:49 GMT\n  Content-Type: application/json; charset=utf-8\n  Transfer-Encoding: chunked\n  Connection: close\n  Cache-Control: max-age=0, private, must-revalidate\n  etag: W/\"09514412c3872866cb772d0b6536b804\"\n  referrer-policy: strict-origin-when-cross-origin\n  vary: Origin\n  x-content-type-options: nosniff\n  x-download-options: noopen\n  x-frame-options: SAMEORIGIN\n  x-permitted-cross-domain-policies: none\n  x-ratelimit-limit: 90\n  x-ratelimit-remaining: 89\n  x-ratelimit-reset: 2\n  x-request-id: d5d09ba1-af02-4fcf-a69d-4557da592d71\n  x-runtime: 0.060235\n  x-xss-protection: 0\n  CF-Cache-Status: DYNAMIC\n  Report-To: {\"endpoints\":[{\"url\":\"https:\\/\\/a.nel.cloudflare.com\\/report\\/v4?s=tSEpjkAa1TzmL0UC3eOw%2BTc3id1OnA%2BZHFmjmqFP6Goiu7NIq%2BPTvME49%2FYISTNqmPFmbsAD3XOn3DiSKvm46Otq0LUtdnZNpMxIdOcuq92t2OHUo%2FJAyK1AQZr1yYs%3D\"}],\"group\":\"cf-nel\",\"max_age\":604800}\n  NEL: {\"success_fraction\":0,\"report_to\":\"cf-nel\",\"max_age\":604800}\n  Server: cloudflare\n  CF-RAY: 89707104ab2f67b5-SJC\n  Content-Encoding: br\n  alt-svc: h3=\":443\"; ma=86400\n"
+                          "text": "APIResponse: 200 OK\n  Date: Fri, 21 Jun 2024 02:08:54 GMT\n  Content-Type: application/json; charset=utf-8\n  Transfer-Encoding: chunked\n  Connection: close\n  Cache-Control: max-age=0, private, must-revalidate\n  etag: W/\"e35d533e3b1f896f6213d97f041a64fe\"\n  referrer-policy: strict-origin-when-cross-origin\n  vary: Origin\n  x-content-type-options: nosniff\n  x-download-options: noopen\n  x-frame-options: SAMEORIGIN\n  x-permitted-cross-domain-policies: none\n  x-ratelimit-limit: 90\n  x-ratelimit-remaining: 89\n  x-ratelimit-reset: 2\n  x-request-id: a1e5202f-faf7-4d97-952a-927fa71ea9f7\n  x-runtime: 0.107079\n  x-xss-protection: 0\n  CF-Cache-Status: DYNAMIC\n  Report-To: {\"endpoints\":[{\"url\":\"https:\\/\\/a.nel.cloudflare.com\\/report\\/v4?s=lu3LaF9H3%2FR644NAh9xmFprhA9Yg3tkvoWoP%2F3NRe%2F5B6J9aKFMuGTMP4%2BWySqhLhblZQsa8mvZciztYfEeUHjhChKoGqB70xbU%2F7lWHzWTcBhEHx3OPBONsZ3eXIQc%3D\"}],\"group\":\"cf-nel\",\"max_age\":604800}\n  NEL: {\"success_fraction\":0,\"report_to\":\"cf-nel\",\"max_age\":604800}\n  Server: cloudflare\n  CF-RAY: 89707413f85f9e56-SJC\n  Content-Encoding: br\n  alt-svc: h3=\":443\"; ma=86400\n"
                         },
                         {
                           "text": "Status obtido: 200\n"
@@ -174,7 +174,7 @@
                       ],
                       "stderr": [],
                       "retry": 0,
-                      "startTime": "2024-06-21T02:06:49.032Z",
+                      "startTime": "2024-06-21T02:08:54.367Z",
                       "attachments": []
                     }
                   ],
@@ -201,11 +201,11 @@
                     {
                       "workerIndex": 0,
                       "status": "passed",
-                      "duration": 382,
+                      "duration": 451,
                       "errors": [],
                       "stdout": [
                         {
-                          "text": "APIResponse: 200 OK\n  Date: Fri, 21 Jun 2024 02:06:49 GMT\n  Content-Type: application/json; charset=utf-8\n  Transfer-Encoding: chunked\n  Connection: close\n  Cache-Control: max-age=0, private, must-revalidate\n  etag: W/\"830c9ee517f417f1190df68e7c40fac3\"\n  referrer-policy: strict-origin-when-cross-origin\n  vary: Origin\n  x-content-type-options: nosniff\n  x-download-options: noopen\n  x-frame-options: SAMEORIGIN\n  x-permitted-cross-domain-policies: none\n  x-ratelimit-limit: 90\n  x-ratelimit-remaining: 88\n  x-ratelimit-reset: 2\n  x-request-id: 8a869c41-c52a-43b5-af0b-d3a0e17ce533\n  x-runtime: 0.068155\n  x-xss-protection: 0\n  CF-Cache-Status: DYNAMIC\n  Report-To: {\"endpoints\":[{\"url\":\"https:\\/\\/a.nel.cloudflare.com\\/report\\/v4?s=LY11s7mO6SG%2FDruFC%2B2H%2FK%2BBnzB4qse0WzbsPd3Imdc2Fm5NbZgXi%2BMVr6qZdPCd9Dix8XGKbyhsNeYNNYaNnYofmVYF8AxuAOL0gq0%2F%2BehxfkzU8S2LKC4EcgcMa1Q%3D\"}],\"group\":\"cf-nel\",\"max_age\":604800}\n  NEL: {\"success_fraction\":0,\"report_to\":\"cf-nel\",\"max_age\":604800}\n  Server: cloudflare\n  CF-RAY: 89707106fc2aceb1-SJC\n  Content-Encoding: br\n  alt-svc: h3=\":443\"; ma=86400\n"
+                          "text": "APIResponse: 200 OK\n  Date: Fri, 21 Jun 2024 02:08:55 GMT\n  Content-Type: application/json; charset=utf-8\n  Transfer-Encoding: chunked\n  Connection: close\n  Cache-Control: max-age=0, private, must-revalidate\n  etag: W/\"f4d20dbdaa5a1c800bae8f9f4a06ec79\"\n  referrer-policy: strict-origin-when-cross-origin\n  vary: Origin\n  x-content-type-options: nosniff\n  x-download-options: noopen\n  x-frame-options: SAMEORIGIN\n  x-permitted-cross-domain-policies: none\n  x-ratelimit-limit: 90\n  x-ratelimit-remaining: 88\n  x-ratelimit-reset: 2\n  x-request-id: 3191739a-38b8-419e-9949-4c707b3e5c41\n  x-runtime: 0.078196\n  x-xss-protection: 0\n  CF-Cache-Status: DYNAMIC\n  Report-To: {\"endpoints\":[{\"url\":\"https:\\/\\/a.nel.cloudflare.com\\/report\\/v4?s=8Vm2xHB9qVJ9MaDt9wvZOFwtmavFBujBg%2BBx4jWUgc3woTrScz8NtEUPWMemKFfUVejPh0f3hucCCG1CcuWwHz6gzDbS2Qo%2BTaP55YepBGy1dbo2itUKUUteGvNtMwQ%3D\"}],\"group\":\"cf-nel\",\"max_age\":604800}\n  NEL: {\"success_fraction\":0,\"report_to\":\"cf-nel\",\"max_age\":604800}\n  Server: cloudflare\n  CF-RAY: 89707416cf1b641d-SJC\n  Content-Encoding: br\n  alt-svc: h3=\":443\"; ma=86400\n"
                         },
                         {
                           "text": "Status obtido: 200\n"
@@ -213,7 +213,7 @@
                       ],
                       "stderr": [],
                       "retry": 0,
-                      "startTime": "2024-06-21T02:06:49.414Z",
+                      "startTime": "2024-06-21T02:08:54.811Z",
                       "attachments": []
                     }
                   ],
@@ -240,11 +240,11 @@
                     {
                       "workerIndex": 0,
                       "status": "passed",
-                      "duration": 481,
+                      "duration": 465,
                       "errors": [],
                       "stdout": [
                         {
-                          "text": "APIResponse: 204 No Content\n  Date: Fri, 21 Jun 2024 02:06:50 GMT\n  Connection: close\n  Cache-Control: no-cache\n  referrer-policy: strict-origin-when-cross-origin\n  vary: Origin\n  x-content-type-options: nosniff\n  x-download-options: noopen\n  x-frame-options: SAMEORIGIN\n  x-permitted-cross-domain-policies: none\n  x-ratelimit-limit: 90\n  x-ratelimit-remaining: 87\n  x-ratelimit-reset: 3\n  x-request-id: 34f203e7-3ac6-4492-9f2f-1e865b46651d\n  x-runtime: 0.134277\n  x-xss-protection: 0\n  CF-Cache-Status: DYNAMIC\n  Report-To: {\"endpoints\":[{\"url\":\"https:\\/\\/a.nel.cloudflare.com\\/report\\/v4?s=0ciAxILCkeBCgsQrbBiTyWotr1%2FatQiwQv3uHmMty3m2iiSkziN2he%2BCtw7ndNvLc3ZuRu07Ieac%2Bzo8JbJNIvFggGvHQbs48LPm%2BAH13ZgzB22I1ekw8JLsReK29lE%3D\"}],\"group\":\"cf-nel\",\"max_age\":604800}\n  NEL: {\"success_fraction\":0,\"report_to\":\"cf-nel\",\"max_age\":604800}\n  Server: cloudflare\n  CF-RAY: 897071096e3dfaca-SJC\n  alt-svc: h3=\":443\"; ma=86400\n"
+                          "text": "APIResponse: 204 No Content\n  Date: Fri, 21 Jun 2024 02:08:55 GMT\n  Connection: close\n  Cache-Control: no-cache\n  referrer-policy: strict-origin-when-cross-origin\n  vary: Origin\n  x-content-type-options: nosniff\n  x-download-options: noopen\n  x-frame-options: SAMEORIGIN\n  x-permitted-cross-domain-policies: none\n  x-ratelimit-limit: 90\n  x-ratelimit-remaining: 87\n  x-ratelimit-reset: 3\n  x-request-id: 7217cf64-0eb1-4f3e-8167-f4ddd56b1ec5\n  x-runtime: 0.140170\n  x-xss-protection: 0\n  CF-Cache-Status: DYNAMIC\n  Report-To: {\"endpoints\":[{\"url\":\"https:\\/\\/a.nel.cloudflare.com\\/report\\/v4?s=WqH77neX9ONOCnjFgfdi2Zhest98YXKprMRMj0f27csNm5rFnjqgNa%2Fy7oPIXCuMDc8XdqDuCMy58ElwyKS43C60MNkfwFvxiWDz6lbtEOQHsx%2Fd%2FvdEISoP1ze3gQs%3D\"}],\"group\":\"cf-nel\",\"max_age\":604800}\n  NEL: {\"success_fraction\":0,\"report_to\":\"cf-nel\",\"max_age\":604800}\n  Server: cloudflare\n  CF-RAY: 897074199da59848-SJC\n  alt-svc: h3=\":443\"; ma=86400\n"
                         },
                         {
                           "text": "Status obtido: 204\n"
@@ -252,7 +252,7 @@
                       ],
                       "stderr": [],
                       "retry": 0,
-                      "startTime": "2024-06-21T02:06:49.797Z",
+                      "startTime": "2024-06-21T02:08:55.264Z",
                       "attachments": []
                     }
                   ],
@@ -296,7 +296,7 @@
                     {
                       "workerIndex": 1,
                       "status": "passed",
-                      "duration": 2528,
+                      "duration": 1913,
                       "errors": [],
                       "stdout": [
                         {
@@ -305,7 +305,7 @@
                       ],
                       "stderr": [],
                       "retry": 0,
-                      "startTime": "2024-06-21T02:06:48.117Z",
+                      "startTime": "2024-06-21T02:08:53.330Z",
                       "attachments": [
                         {
                           "name": "screenshot",
@@ -335,7 +335,7 @@
   ],
   "errors": [],
   "stats": {
-    "startTime": "2024-06-21T02:06:47.648Z",
-    "duration": 4358.569
+    "startTime": "2024-06-21T02:08:52.894Z",
+    "duration": 2846.742
   }
 }
