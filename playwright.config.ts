@@ -1,18 +1,18 @@
-import { defineConfig, devices } from '@playwright/test';
+import { defineConfig, devices } from "@playwright/test";
 
 /**
  * Read environment variables from file.
  * https://github.com/motdotla/dotenv
  */
 
-require('dotenv').config();
+require("dotenv").config();
 
 /**
  * See https://playwright.dev/docs/test-configuration.
  */
 export default defineConfig({
   /* Directory of the test files*/
-  testDir: './tests',
+  testDir: "./tests",
   /* Timeout global*/
   timeout: 30000,
   /* Run tests in files in parallel */
@@ -24,28 +24,38 @@ export default defineConfig({
   /* Opt out of parallel tests on CI. */
   workers: process.env.CI ? undefined : undefined,
   /* Reporter to use. See https://playwright.dev/docs/test-reporters */
-  reporter: [['html'], ['json', { outputFile: 'playwright-report/results.xml' }]], 
-
+  reporter: [
+    ["html", { open: "never" }],
+    ["json", { outputFile: "playwright-report/results.xml" }],
+  ],
+  expect: {
+    toHaveScreenshot: {
+      maxDiffPixelRatio: 0.05, // Tolera até 5% de variação de pixels
+      threshold: 0.2, // Sensibilidade de cor do pixel
+      animations: "allow", // Desativa animações durante a captura de tela
+    
+    },
+  },
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
   use: {
     /* Base URL to use in actions like `await page.goto('/')`. */
-    baseURL: process.env.URL = 'https://the-internet.herokuapp.com',
+    baseURL: (process.env.URL = "https://the-internet.herokuapp.com"),
 
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
     launchOptions: {
-      slowMo: 100
+      slowMo: 100,
     },
-    trace: 'on-first-retry',
-    screenshot: 'on',
-    video: 'on',
+    trace: "on-first-retry",
+    screenshot: "only-on-failure",
+    video: "off",
     actionTimeout: 30000,
   },
 
   /* Configure projects for major browsers */
   projects: [
     {
-      name: 'chromium',
-      use: { ...devices['Desktop Chrome'] },
+      name: "chromium",
+      use: { ...devices["Desktop Chrome"] },
     },
 
     // {

@@ -3,15 +3,21 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-  "scripts": {},
+  "scripts": {
+    "test": "npx playwright test",
+    "test:accessibility": "npx playwright test tests/accessibility-test.spec.ts",
+    "test:update:baseline": "npx playwright test tests/visual-test.spec.ts --update-snapshots",
+    "test:visual": "npx playwright test tests/visual-test.spec.ts",
+    "test:report": "npx playwright show-report"
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "@playwright/test": "^1.39.0",
-    "@types/node": "^20.8.8"
-  },
-  "dependencies": {
+    "@axe-core/playwright": "^4.12.1",
+    "@playwright/test": "^1.62.1",
+    "@types/node": "^20.8.8",
+    "axe-html-reporter": "^2.2.11",
     "dotenv": "^16.4.5"
   }
 }
