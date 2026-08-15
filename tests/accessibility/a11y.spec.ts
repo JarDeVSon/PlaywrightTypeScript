@@ -5,7 +5,7 @@ import fs from "fs";
 
 test("example accessibility scan with attachment", async ({ page }) => {
 
-  await page.goto("https://debs-obrien.github.io/playwright-api-mocking/");
+  await page.goto(process.env.BASE_URL);
 
   const accessibilityScanResults = await new AxeBuilder({ page }).analyze();
 
