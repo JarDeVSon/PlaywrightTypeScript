@@ -238,7 +238,7 @@ jobs:
           
           echo "Autenticação no Xray realizada com sucesso!"
           
-          # 2. Montar URL com parâmetros (sem testPlanKey para compatibilidade com Xray Standard)
+          # 2. Montar URL com parâmetros (sem testPlanKey para Xray Standard)
           URL="https://xray.cloud.getxray.app/api/v2/import/execution/junit?projectKey=$XRAY_PROJECT_KEY"
           
           if [ -n "$XRAY_TEST_EXECUTION" ]; then
@@ -259,15 +259,17 @@ jobs:
           echo "----------------------------------------------"
 
       # =====================================================
-      # IMPORT RESULTS TO XRAY (ACTION OFICIAL XRAY)
+      # IMPORT RESULTS TO XRAY (MIKEPENZ)
       # =====================================================
       - name: Import results to Xray
         id: xray
         if: always()
-        uses: xray/xray-action@v3.1.0
+        uses: mikepenz/xray-action@v3.1.1
         with:
           username: ${{ secrets.XRAYCLOUD_CLIENT_ID }}
           password: ${{ secrets.XRAYCLOUD_CLIENT_SECRET }}
+          xrayCloud: "true"
+          xrayBaseUrl: ${{ vars.XRAYCLOUD_BASE_URL }}
           testFormat: "junit"
           testPaths: "xray-report.xml"
           projectKey: "${{ inputs.projectKey }}"
