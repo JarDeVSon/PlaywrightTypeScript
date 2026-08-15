@@ -25,16 +25,6 @@ on:
 
         type: string
 
-      # =====================================================
-      # XRAY TEST EXECUTION
-      # =====================================================
-
-      testExecutionKey:
-        description: "Existing Xray Test Execution Key"
-
-        required: true
-
-        type: string
 
       # =====================================================
       # APPLICATION ENVIRONMENT
@@ -131,7 +121,6 @@ jobs:
 
       XRAY_TEST_PLAN: ${{ inputs.testPlanKey }}
 
-      XRAY_TEST_EXECUTION: ${{ inputs.testExecutionKey }}
 
     steps:
       # =====================================================
@@ -425,8 +414,7 @@ jobs:
 
           projectKey: "${{ inputs.projectKey }}"
 
-          testExecKey: "${{ inputs.testExecutionKey }}"
-
+ 
           # -------------------------------------------------
           # IMPORTANT
           #
