@@ -190,9 +190,7 @@ jobs:
 
           echo ""
 
-          echo "Xray Test Execution:"
-          echo "$XRAY_TEST_EXECUTION"
-
+       
           echo ""
 
           echo "Application Environment:"
@@ -267,13 +265,7 @@ jobs:
           fi
 
 
-          if [ -z "$XRAY_TEST_EXECUTION" ]; then
-
-            echo "::error::Xray Test Execution Key is required."
-
-            exit 1
-
-          fi
+          
 
 
           echo "Configuration validation passed."
@@ -450,10 +442,6 @@ jobs:
           echo "Test Plan:"
           echo "$XRAY_TEST_PLAN"
 
-          echo ""
-
-          echo "Test Execution:"
-          echo "$XRAY_TEST_EXECUTION"
 
           echo ""
 
@@ -489,10 +477,6 @@ jobs:
             >> "$GITHUB_STEP_SUMMARY"
 
 
-          echo "| Test Execution | $XRAY_TEST_EXECUTION |" \
-            >> "$GITHUB_STEP_SUMMARY"
-
-
           echo "| Application Environment | $TEST_ENVIRONMENT |" \
             >> "$GITHUB_STEP_SUMMARY"
 
@@ -517,11 +501,7 @@ jobs:
             >> "$GITHUB_STEP_SUMMARY"
 
 
-          echo "" >> "$GITHUB_STEP_SUMMARY"
-
-
-          echo "[Open Test Execution]($JIRA_BASE_URL/browse/$XRAY_TEST_EXECUTION)" \
-            >> "$GITHUB_STEP_SUMMARY"
+          
 
       # =====================================================
       # FINAL PLAYWRIGHT STATUS
