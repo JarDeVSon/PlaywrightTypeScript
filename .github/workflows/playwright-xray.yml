@@ -1,144 +1,119 @@
 name: Playwright - Xray Cloud
 
 on:
-
   workflow_dispatch:
-
     inputs:
-
       # =====================================================
       # XRAY PROJECT
       # =====================================================
 
       projectKey:
-
-        description: 'Xray Project Key'
+        description: "Xray Project Key"
 
         required: true
 
         type: string
-
 
       # =====================================================
       # XRAY TEST PLAN
       # =====================================================
 
       testPlanKey:
-
-        description: 'Xray Test Plan Key'
+        description: "Xray Test Plan Key"
 
         required: true
 
         type: string
-
 
       # =====================================================
       # XRAY TEST EXECUTION
       # =====================================================
 
       testExecutionKey:
-
-        description: 'Existing Xray Test Execution Key'
+        description: "Existing Xray Test Execution Key"
 
         required: true
 
         type: string
-
 
       # =====================================================
       # APPLICATION ENVIRONMENT
       # =====================================================
 
       environment:
-
-        description: 'Application environment'
+        description: "Application environment"
 
         required: true
 
         type: choice
 
         options:
-
           - dev
           - qa
           - staging
           - production
-
 
       # =====================================================
       # PLAYWRIGHT SUITE
       # =====================================================
 
       testSuite:
-
-        description: 'Playwright suite'
+        description: "Playwright suite"
 
         required: true
 
         type: choice
 
         options:
-
           - web
           - api
           - visual
           - accessibility
-
 
       # =====================================================
       # OPTIONAL GREP
       # =====================================================
 
       grep:
-
-        description: 'Optional Playwright grep/tag'
+        description: "Optional Playwright grep/tag"
 
         required: false
 
-        default: ''
+        default: ""
 
         type: string
-
 
 # ===========================================================
 # JOB
 # ===========================================================
 
 jobs:
-
   build:
-
     runs-on: ubuntu-latest
-
 
     # =======================================================
     # DYNAMIC GITHUB ENVIRONMENT
     # =======================================================
 
     environment:
-
       name: ${{ inputs.environment }}
-
 
     # =======================================================
     # ENVIRONMENT VARIABLES
     # =======================================================
 
     env:
-
       # -----------------------------------------------------
       # Jira / Atlassian
       # -----------------------------------------------------
 
       JIRA_BASE_URL: ${{ vars.JIRA_BASE_URL }}
 
-
       # -----------------------------------------------------
       # Application
       # -----------------------------------------------------
 
       BASE_URL: ${{ vars.BASE_URL }}
-
 
       # -----------------------------------------------------
       # Execution
@@ -147,7 +122,6 @@ jobs:
       TEST_ENVIRONMENT: ${{ inputs.environment }}
 
       TEST_SUITE: ${{ inputs.testSuite }}
-
 
       # -----------------------------------------------------
       # Xray
@@ -159,10 +133,7 @@ jobs:
 
       XRAY_TEST_EXECUTION: ${{ inputs.testExecutionKey }}
 
-
     steps:
-
-
       # =====================================================
       # CHECKOUT
       # =====================================================
@@ -170,7 +141,6 @@ jobs:
       - name: Checkout repository
 
         uses: actions/checkout@v4
-
 
       # =====================================================
       # NODE.JS
@@ -181,11 +151,9 @@ jobs:
         uses: actions/setup-node@v4
 
         with:
-
           node-version: 22
 
           cache: npm
-
 
       # =====================================================
       # INSTALL DEPENDENCIES
@@ -194,7 +162,6 @@ jobs:
       - name: Install dependencies
 
         run: npm ci
-
 
       # =====================================================
       # INSTALL CHROMIUM ONLY
@@ -205,7 +172,6 @@ jobs:
         run: |
 
           npx playwright install --with-deps chromium
-
 
       # =====================================================
       # DISPLAY EXECUTION CONFIGURATION
@@ -261,7 +227,6 @@ jobs:
           echo ""
 
           echo "=============================================="
-
 
       # =====================================================
       # VALIDATE CONFIGURATION
@@ -324,7 +289,6 @@ jobs:
 
           echo "Configuration validation passed."
 
-
       # =====================================================
       # RUN PLAYWRIGHT
       # =====================================================
@@ -360,7 +324,6 @@ jobs:
               --project="$TEST_SUITE"
 
           fi
-
 
       # =====================================================
       # VERIFY JUNIT REPORT
@@ -398,7 +361,6 @@ jobs:
 
           ls -lh xray-report.xml
 
-
       # =====================================================
       # UPLOAD PLAYWRIGHT ARTIFACTS
       # =====================================================
@@ -410,7 +372,6 @@ jobs:
         uses: actions/upload-artifact@v4
 
         with:
-
           name: playwright-${{ inputs.testSuite }}-${{ inputs.environment }}
 
           path: |
@@ -422,7 +383,6 @@ jobs:
             test-results/
 
           if-no-files-found: warn
-
 
       # =====================================================
       # IMPORT RESULTS TO XRAY
@@ -437,7 +397,6 @@ jobs:
         uses: mikepenz/xray-action@v3.1.1
 
         with:
-
           # -------------------------------------------------
           # Xray Cloud authentication
           # -------------------------------------------------
@@ -450,7 +409,6 @@ jobs:
 
           xrayBaseUrl: ${{ vars.XRAYCLOUD_BASE_URL }}
 
-
           # -------------------------------------------------
           # JUnit report
           # -------------------------------------------------
@@ -458,7 +416,6 @@ jobs:
           testFormat: "junit"
 
           testPaths: "xray-report.xml"
-
 
           # -------------------------------------------------
           # Xray objects
@@ -469,7 +426,6 @@ jobs:
           projectKey: "${{ inputs.projectKey }}"
 
           testExecKey: "${{ inputs.testExecutionKey }}"
-
 
           # -------------------------------------------------
           # IMPORTANT
@@ -482,7 +438,6 @@ jobs:
           # Once the Xray environment is configured, we
           # can add it back.
           # -------------------------------------------------
-
 
       # =====================================================
       # XRAY RESULT
@@ -515,7 +470,6 @@ jobs:
           echo ""
 
           echo "=============================================="
-
 
       # =====================================================
       # GITHUB SUMMARY
@@ -580,7 +534,6 @@ jobs:
 
           echo "[Open Test Execution]($JIRA_BASE_URL/browse/$XRAY_TEST_EXECUTION)" \
             >> "$GITHUB_STEP_SUMMARY"
-
 
       # =====================================================
       # FINAL PLAYWRIGHT STATUS
