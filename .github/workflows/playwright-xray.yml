@@ -12,11 +12,12 @@ on:
         type: string
 
       # =====================================================
-      # XRAY TEST PLAN
+      # XRAY TEST PLAN (OPCIONAL NO XRAY STANDARD)
       # =====================================================
       testPlanKey:
-        description: "Xray Test Plan Key"
-        required: true
+        description: "Xray Test Plan Key (Apenas Xray Enterprise)"
+        required: false
+        default: ""
         type: string
 
       # =====================================================
@@ -126,7 +127,7 @@ jobs:
           echo "PLAYWRIGHT + XRAY EXECUTION"
           echo "=============================================="
           echo "Xray Project: $XRAY_PROJECT_KEY"
-          echo "Xray Test Plan: $XRAY_TEST_PLAN"
+          echo "Xray Test Plan: ${XRAY_TEST_PLAN:-'(Nenhum - Xray Standard)'}"
           echo "Xray Test Execution: ${XRAY_TEST_EXECUTION:-'(A new Test Execution will be created)'}"
           echo "Application Environment: $TEST_ENVIRONMENT"
           echo "Playwright Suite: $TEST_SUITE"
@@ -152,11 +153,6 @@ jobs:
 
           if [ -z "$XRAY_PROJECT_KEY" ]; then
             echo "::error::Xray Project Key is required."
-            exit 1
-          fi
-
-          if [ -z "$XRAY_TEST_PLAN" ]; then
-            echo "::error::Xray Test Plan Key is required."
             exit 1
           fi
 
@@ -242,8 +238,8 @@ jobs:
           
           echo "Autenticação no Xray realizada com sucesso!"
           
-          # 2. Montar URL com parâmetros
-          URL="https://xray.cloud.getxray.app/api/v2/import/execution/junit?projectKey=$XRAY_PROJECT_KEY&testPlanKey=$XRAY_TEST_PLAN"
+          # 2. Montar URL com parâmetros (sem testPlanKey para compatibilidade com Xray Standard)
+          URL="https://xray.cloud.getxray.app/api/v2/import/execution/junit?projectKey=$XRAY_PROJECT_KEY"
           
           if [ -n "$XRAY_TEST_EXECUTION" ]; then
             URL="${URL}&testExecKey=${XRAY_TEST_EXECUTION}"
@@ -253,7 +249,7 @@ jobs:
           echo "Resposta detalhada da API do Jira/Xray:"
           echo "----------------------------------------------"
           
-          # 3. Disparar importação com payload XML bruto para ver detalhes de erro do Jira
+          # 3. Disparar importação com payload XML bruto
           curl -s -H "Authorization: Bearer $TOKEN" \
             -H "Content-Type: text/xml" \
             --data-binary @"xray-report.xml" \
@@ -263,21 +259,18 @@ jobs:
           echo "----------------------------------------------"
 
       # =====================================================
-      # IMPORT RESULTS TO XRAY (ACTION PADRÃO)
+      # IMPORT RESULTS TO XRAY (ACTION OFICIAL XRAY)
       # =====================================================
       - name: Import results to Xray
         id: xray
         if: always()
-        uses: mikepenz/xray-action@v3.1.1
+        uses: xray/xray-action@v3.1.0
         with:
           username: ${{ secrets.XRAYCLOUD_CLIENT_ID }}
           password: ${{ secrets.XRAYCLOUD_CLIENT_SECRET }}
-          xrayCloud: "true"
-          xrayBaseUrl: ${{ vars.XRAYCLOUD_BASE_URL }}
           testFormat: "junit"
           testPaths: "xray-report.xml"
           projectKey: "${{ inputs.projectKey }}"
-          testPlanKey: "${{ inputs.testPlanKey }}"
           testExecKey: "${{ inputs.testExecutionKey }}"
 
       # =====================================================
@@ -290,7 +283,7 @@ jobs:
           echo "=============================================="
           echo "XRAY RESULT"
           echo "=============================================="
-          echo "Test Plan: $XRAY_TEST_PLAN"
+          echo "Test Plan: ${XRAY_TEST_PLAN:-'Nenhum informado'}"
           echo "Test Execution Key Utilizada: ${XRAY_TEST_EXECUTION:-'(Gerada uma nova via API)'}"
           echo "=============================================="
 
@@ -306,7 +299,7 @@ jobs:
           echo "| Field | Value |" >> "$GITHUB_STEP_SUMMARY"
           echo "|---|---|" >> "$GITHUB_STEP_SUMMARY"
           echo "| Project | $XRAY_PROJECT_KEY |" >> "$GITHUB_STEP_SUMMARY"
-          echo "| Test Plan | $XRAY_TEST_PLAN |" >> "$GITHUB_STEP_SUMMARY"
+          echo "| Test Plan | ${XRAY_TEST_PLAN:-'N/A'} |" >> "$GITHUB_STEP_SUMMARY"
           echo "| Test Execution | ${XRAY_TEST_EXECUTION:-'Criada Automaticamente'} |" >> "$GITHUB_STEP_SUMMARY"
           echo "| Application Environment | $TEST_ENVIRONMENT |" >> "$GITHUB_STEP_SUMMARY"
           echo "| Test Suite | $TEST_SUITE |" >> "$GITHUB_STEP_SUMMARY"
@@ -314,7 +307,10 @@ jobs:
           echo "" >> "$GITHUB_STEP_SUMMARY"
           echo "## Xray" >> "$GITHUB_STEP_SUMMARY"
           echo "" >> "$GITHUB_STEP_SUMMARY"
-          echo "[Open Test Plan]($JIRA_BASE_URL/browse/$XRAY_TEST_PLAN)" >> "$GITHUB_STEP_SUMMARY"
+          
+          if [ -n "$XRAY_TEST_PLAN" ]; then
+            echo "[Open Test Plan]($JIRA_BASE_URL/browse/$XRAY_TEST_PLAN)" >> "$GITHUB_STEP_SUMMARY"
+          fi
           
           if [ -n "$XRAY_TEST_EXECUTION" ]; then
             echo "" >> "$GITHUB_STEP_SUMMARY"
