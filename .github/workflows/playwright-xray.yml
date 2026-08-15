@@ -253,9 +253,10 @@ jobs:
           echo "Resposta detalhada da API do Jira/Xray:"
           echo "----------------------------------------------"
           
-          # 3. Disparar importação e exibir o JSON real de erro do Jira
+          # 3. Disparar importação com payload XML bruto para ver detalhes de erro do Jira
           curl -s -H "Authorization: Bearer $TOKEN" \
-            -F "file=@xray-report.xml" \
+            -H "Content-Type: text/xml" \
+            --data-binary @"xray-report.xml" \
             "$URL"
           
           echo ""
