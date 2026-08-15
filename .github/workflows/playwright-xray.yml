@@ -60,8 +60,9 @@ on:
       grep:
         description: "Optional Playwright grep/tag"
         required: false
-        default: ""
-        type: string
+        type: choice
+        options:
+          - smoke
 
 # ===========================================================
 # JOB
