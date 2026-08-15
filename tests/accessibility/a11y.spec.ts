@@ -3,7 +3,7 @@ import AxeBuilder from "@axe-core/playwright";
 import { createHtmlReport } from "axe-html-reporter";
 import fs from "fs";
 
-test("example accessibility scan with attachment", async ({ page }) => {
+test("example accessibility scan with attachment [XSP5-58] @smoke", async ({ page }) => {
 
   await page.goto(process.env.BASE_URL);
 
