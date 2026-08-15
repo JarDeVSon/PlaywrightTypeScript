@@ -6,37 +6,35 @@ on:
       # =====================================================
       # XRAY PROJECT
       # =====================================================
-
       projectKey:
         description: "Xray Project Key"
-
         required: true
-
         type: string
 
       # =====================================================
       # XRAY TEST PLAN
       # =====================================================
-
       testPlanKey:
         description: "Xray Test Plan Key"
-
         required: true
-
         type: string
 
+      # =====================================================
+      # XRAY TEST EXECUTION (OPCIONAL)
+      # =====================================================
+      testExecutionKey:
+        description: "Existing Xray Test Execution Key (Leave empty to create new)"
+        required: false
+        default: ""
+        type: string
 
       # =====================================================
       # APPLICATION ENVIRONMENT
       # =====================================================
-
       environment:
         description: "Application environment"
-
         required: true
-
         type: choice
-
         options:
           - dev
           - qa
@@ -46,14 +44,10 @@ on:
       # =====================================================
       # PLAYWRIGHT SUITE
       # =====================================================
-
       testSuite:
         description: "Playwright suite"
-
         required: true
-
         type: choice
-
         options:
           - web
           - api
@@ -63,20 +57,15 @@ on:
       # =====================================================
       # OPTIONAL GREP
       # =====================================================
-
       grep:
         description: "Optional Playwright grep/tag"
-
         required: false
-
         default: ""
-
         type: string
 
 # ===========================================================
 # JOB
 # ===========================================================
-
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -84,439 +73,211 @@ jobs:
     # =======================================================
     # DYNAMIC GITHUB ENVIRONMENT
     # =======================================================
-
     environment:
       name: ${{ inputs.environment }}
 
     # =======================================================
     # ENVIRONMENT VARIABLES
     # =======================================================
-
     env:
-      # -----------------------------------------------------
-      # Jira / Atlassian
-      # -----------------------------------------------------
-
       JIRA_BASE_URL: ${{ vars.JIRA_BASE_URL }}
-
-      # -----------------------------------------------------
-      # Application
-      # -----------------------------------------------------
-
       BASE_URL: ${{ vars.BASE_URL }}
-
-      # -----------------------------------------------------
-      # Execution
-      # -----------------------------------------------------
-
       TEST_ENVIRONMENT: ${{ inputs.environment }}
-
       TEST_SUITE: ${{ inputs.testSuite }}
-
-      # -----------------------------------------------------
-      # Xray
-      # -----------------------------------------------------
-
       XRAY_PROJECT_KEY: ${{ inputs.projectKey }}
-
       XRAY_TEST_PLAN: ${{ inputs.testPlanKey }}
-
+      XRAY_TEST_EXECUTION: ${{ inputs.testExecutionKey }}
 
     steps:
       # =====================================================
       # CHECKOUT
       # =====================================================
-
       - name: Checkout repository
-
         uses: actions/checkout@v4
 
       # =====================================================
       # NODE.JS
       # =====================================================
-
       - name: Setup Node.js
-
         uses: actions/setup-node@v4
-
         with:
           node-version: 22
-
           cache: npm
 
       # =====================================================
       # INSTALL DEPENDENCIES
       # =====================================================
-
       - name: Install dependencies
-
         run: npm ci
 
       # =====================================================
       # INSTALL CHROMIUM ONLY
       # =====================================================
-
       - name: Install Playwright Chromium
-
         run: |
-
           npx playwright install --with-deps chromium
 
       # =====================================================
       # DISPLAY EXECUTION CONFIGURATION
       # =====================================================
-
       - name: Display execution configuration
-
         shell: bash
-
         run: |
-
           echo "=============================================="
-
           echo "PLAYWRIGHT + XRAY EXECUTION"
-
           echo "=============================================="
-
-          echo ""
-
-          echo "Xray Project:"
-          echo "$XRAY_PROJECT_KEY"
-
-          echo ""
-
-          echo "Xray Test Plan:"
-          echo "$XRAY_TEST_PLAN"
-
-          echo ""
-
-       
-          echo ""
-
-          echo "Application Environment:"
-          echo "$TEST_ENVIRONMENT"
-
-          echo ""
-
-          echo "Playwright Suite:"
-          echo "$TEST_SUITE"
-
-          echo ""
-
-          echo "BASE_URL:"
-          echo "$BASE_URL"
-
-          echo ""
-
-          echo "Jira:"
-          echo "$JIRA_BASE_URL"
-
-          echo ""
-
+          echo "Xray Project: $XRAY_PROJECT_KEY"
+          echo "Xray Test Plan: $XRAY_TEST_PLAN"
+          echo "Xray Test Execution: ${XRAY_TEST_EXECUTION:-'(A new Test Execution will be created)'}"
+          echo "Application Environment: $TEST_ENVIRONMENT"
+          echo "Playwright Suite: $TEST_SUITE"
+          echo "BASE_URL: $BASE_URL"
+          echo "Jira: $JIRA_BASE_URL"
           echo "=============================================="
 
       # =====================================================
       # VALIDATE CONFIGURATION
       # =====================================================
-
       - name: Validate configuration
-
         shell: bash
-
         run: |
-
           if [ -z "$BASE_URL" ]; then
-
-            echo "::error::BASE_URL is empty."
-
-            echo "Check the GitHub Environment variable."
-
+            echo "::error::BASE_URL is empty. Check GitHub Environment variables."
             exit 1
-
           fi
-
 
           if [ -z "$JIRA_BASE_URL" ]; then
-
-            echo "::error::JIRA_BASE_URL is empty."
-
-            echo "Check the repository variable."
-
+            echo "::error::JIRA_BASE_URL is empty. Check repository variables."
             exit 1
-
           fi
-
 
           if [ -z "$XRAY_PROJECT_KEY" ]; then
-
             echo "::error::Xray Project Key is required."
-
             exit 1
-
           fi
-
 
           if [ -z "$XRAY_TEST_PLAN" ]; then
-
             echo "::error::Xray Test Plan Key is required."
-
             exit 1
-
           fi
-
-
-          
-
 
           echo "Configuration validation passed."
 
       # =====================================================
       # RUN PLAYWRIGHT
       # =====================================================
-
       - name: Run Playwright tests
-
         id: playwright
-
         continue-on-error: true
-
         shell: bash
-
         run: |
-
           echo "Running Playwright project: $TEST_SUITE"
-
           echo "Environment: $TEST_ENVIRONMENT"
-
           echo "BASE_URL: $BASE_URL"
 
-
           if [ -n "${{ inputs.grep }}" ]; then
-
             echo "Grep: ${{ inputs.grep }}"
-
             npx playwright test \
               --project="$TEST_SUITE" \
               --grep "${{ inputs.grep }}"
-
           else
-
             npx playwright test \
               --project="$TEST_SUITE"
-
           fi
 
       # =====================================================
       # VERIFY JUNIT REPORT
       # =====================================================
-
       - name: Verify JUnit report
-
         if: always()
-
         shell: bash
-
         run: |
-
           echo "Checking Xray JUnit report..."
 
-
           if [ ! -f "xray-report.xml" ]; then
-
             echo "::error::xray-report.xml was not generated."
-
-            echo ""
-
-            echo "Files in workspace:"
-
             find . -maxdepth 3 -type f | sort | head -200
-
             exit 1
-
           fi
-
-
-          echo ""
-
-          echo "JUnit report found:"
 
           ls -lh xray-report.xml
 
       # =====================================================
       # UPLOAD PLAYWRIGHT ARTIFACTS
       # =====================================================
-
       - name: Upload Playwright artifacts
-
         if: always()
-
         uses: actions/upload-artifact@v4
-
         with:
           name: playwright-${{ inputs.testSuite }}-${{ inputs.environment }}
-
           path: |
-
             xray-report.xml
-
             playwright-report/
-
             test-results/
-
           if-no-files-found: warn
 
       # =====================================================
       # IMPORT RESULTS TO XRAY
       # =====================================================
-
       - name: Import results to Xray
-
         id: xray
-
         if: always()
-
         uses: mikepenz/xray-action@v3.1.1
-
         with:
-          # -------------------------------------------------
-          # Xray Cloud authentication
-          # -------------------------------------------------
-
           username: ${{ secrets.XRAYCLOUD_CLIENT_ID }}
-
           password: ${{ secrets.XRAYCLOUD_CLIENT_SECRET }}
-
           xrayCloud: "true"
-
           xrayBaseUrl: ${{ vars.XRAYCLOUD_BASE_URL }}
-
-          # -------------------------------------------------
-          # JUnit report
-          # -------------------------------------------------
-
           testFormat: "junit"
-
           testPaths: "xray-report.xml"
-
-          # -------------------------------------------------
-          # Xray objects
-          # -------------------------------------------------
-
-          testPlanKey: "${{ inputs.testPlanKey }}"
-
           projectKey: "${{ inputs.projectKey }}"
-
- 
-          # -------------------------------------------------
-          # IMPORTANT
-          #
-          # testEnvironments is intentionally NOT configured.
-          #
-          # The sample Xray project does not have "dev"
-          # configured as a valid Test Environment.
-          #
-          # Once the Xray environment is configured, we
-          # can add it back.
-          # -------------------------------------------------
+          testPlanKey: "${{ inputs.testPlanKey }}"
+          # Passa a chave apenas se o input for preenchido
+          testExecKey: "${{ inputs.testExecutionKey }}"
 
       # =====================================================
       # XRAY RESULT
       # =====================================================
-
       - name: Display Xray Test Execution
-
         if: always()
-
         shell: bash
-
         run: |
-
           echo "=============================================="
-
           echo "XRAY RESULT"
-
           echo "=============================================="
-
-          echo ""
-
-          echo "Test Plan:"
-          echo "$XRAY_TEST_PLAN"
-
-
-          echo ""
-
+          echo "Test Plan: $XRAY_TEST_PLAN"
+          echo "Test Execution Key Utilizada: ${XRAY_TEST_EXECUTION:-'(Gerada uma nova via API)'}"
           echo "=============================================="
 
       # =====================================================
       # GITHUB SUMMARY
       # =====================================================
-
       - name: Add execution summary
-
         if: always()
-
         shell: bash
-
         run: |
-
           echo "# Playwright + Xray Execution" >> "$GITHUB_STEP_SUMMARY"
-
           echo "" >> "$GITHUB_STEP_SUMMARY"
-
-
           echo "| Field | Value |" >> "$GITHUB_STEP_SUMMARY"
-
           echo "|---|---|" >> "$GITHUB_STEP_SUMMARY"
-
-
-          echo "| Project | $XRAY_PROJECT_KEY |" \
-            >> "$GITHUB_STEP_SUMMARY"
-
-
-          echo "| Test Plan | $XRAY_TEST_PLAN |" \
-            >> "$GITHUB_STEP_SUMMARY"
-
-
-          echo "| Application Environment | $TEST_ENVIRONMENT |" \
-            >> "$GITHUB_STEP_SUMMARY"
-
-
-          echo "| Test Suite | $TEST_SUITE |" \
-            >> "$GITHUB_STEP_SUMMARY"
-
-
-          echo "| Base URL | $BASE_URL |" \
-            >> "$GITHUB_STEP_SUMMARY"
-
-
+          echo "| Project | $XRAY_PROJECT_KEY |" >> "$GITHUB_STEP_SUMMARY"
+          echo "| Test Plan | $XRAY_TEST_PLAN |" >> "$GITHUB_STEP_SUMMARY"
+          echo "| Test Execution | ${XRAY_TEST_EXECUTION:-'Criada Automaticamente'} |" >> "$GITHUB_STEP_SUMMARY"
+          echo "| Application Environment | $TEST_ENVIRONMENT |" >> "$GITHUB_STEP_SUMMARY"
+          echo "| Test Suite | $TEST_SUITE |" >> "$GITHUB_STEP_SUMMARY"
+          echo "| Base URL | $BASE_URL |" >> "$GITHUB_STEP_SUMMARY"
           echo "" >> "$GITHUB_STEP_SUMMARY"
-
-
           echo "## Xray" >> "$GITHUB_STEP_SUMMARY"
-
           echo "" >> "$GITHUB_STEP_SUMMARY"
-
-
-          echo "[Open Test Plan]($JIRA_BASE_URL/browse/$XRAY_TEST_PLAN)" \
-            >> "$GITHUB_STEP_SUMMARY"
-
-
-          
+          echo "[Open Test Plan]($JIRA_BASE_URL/browse/$XRAY_TEST_PLAN)" >> "$GITHUB_STEP_SUMMARY"
 
       # =====================================================
       # FINAL PLAYWRIGHT STATUS
       # =====================================================
-
       - name: Fail workflow if Playwright failed
-
         if: steps.playwright.outcome == 'failure'
-
         shell: bash
-
         run: |
-
           echo "::error::Playwright tests failed."
-
           echo "The Xray import was still attempted."
-
           exit 1
