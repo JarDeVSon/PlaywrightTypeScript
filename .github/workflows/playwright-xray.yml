@@ -250,7 +250,7 @@ jobs:
           echo "----------------------------------------------"
           
           # 3. Disparar importação com payload XML bruto
-          curl -s -H "Authorization: Bearer $TOKEN" \
+          curl -v -H "Authorization: Bearer $TOKEN" \
             -H "Content-Type: text/xml" \
             --data-binary @"xray-report.xml" \
             "$URL"
@@ -268,7 +268,7 @@ jobs:
         with:
           username: ${{ secrets.XRAYCLOUD_CLIENT_ID }}
           password: ${{ secrets.XRAYCLOUD_CLIENT_SECRET }}
-          #xrayCloud: "true"
+          #xrayCloud: "true"  
           #xrayBaseUrl: ${{ vars.XRAYCLOUD_BASE_URL }}
           testFormat: "junit"
           testPaths: "xray-report.xml"
