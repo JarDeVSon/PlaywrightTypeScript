@@ -5,10 +5,12 @@
   "main": "index.js",
   "scripts": {
     "test": "npx playwright test",
-    "test:accessibility": "npx playwright test tests/accessibility-test.spec.ts",
-    "test:update:baseline": "npx playwright test tests/visual-test.spec.ts --update-snapshots",
-    "test:visual": "npx playwright test tests/visual-test.spec.ts",
-    "test:report": "npx playwright show-report"
+    "test:update:baseline": "npx playwright test tests/visual/visual.spec.ts --update-snapshots",
+    "test:report": "npx playwright show-report",
+    "test:web": "npx playwright test --project=web",
+    "test:api": "npx playwright test --project=api",
+    "test:visual": "npx playwright test --project=visual",
+    "test:accessibility": "npx playwright test --project=accessibility"
   },
   "keywords": [],
   "author": "",

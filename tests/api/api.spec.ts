@@ -1,5 +1,5 @@
 import { test, expect } from "@playwright/test";
-import { data_api } from "../fixtures/data_api.json";
+import { data_api } from "../../fixtures/data_api.json";
 
 let id: any;
 let token = process.env.TOKEN;

@@ -16,7 +16,7 @@ test("example accessibility scan with attachment", async ({ page }) => {
   createHtmlReport({
     results: accessibilityScanResults,
     options: {
-      projectKey: "Ad Delivery Management",
+      projectKey: `process.env.baseURL`,
       outputDir: "test-results/",
       reportFileName: "accessibility-scan-results.html",
     },

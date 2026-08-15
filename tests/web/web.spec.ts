@@ -1,7 +1,7 @@
 import { test, expect } from "@playwright/test";
-import { DashboardPage } from "../pages/dashboard-page";
-import { data_web } from "../fixtures/data_web.json";
-import { LoginPage } from "../pages/login-page";
+import { DashboardPage } from "../../pages/dashboard-page";
+import { data_web } from "../../fixtures/data_web.json";
+import { LoginPage } from "../../pages/login-page";
 
 let loginPage: LoginPage;
 let dashboardPage: DashboardPage;
