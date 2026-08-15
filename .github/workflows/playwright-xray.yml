@@ -37,7 +37,6 @@ on:
         type: choice
         options:
           - dev
-          - qa
           - staging
           - production
 
@@ -270,6 +269,8 @@ jobs:
           echo "## Xray" >> "$GITHUB_STEP_SUMMARY"
           echo "" >> "$GITHUB_STEP_SUMMARY"
           echo "[Open Test Plan]($JIRA_BASE_URL/browse/$XRAY_TEST_PLAN)" >> "$GITHUB_STEP_SUMMARY"
+          echo "" >> "$GITHUB_STEP_SUMMARY"
+          echo "[Open Test Execution]($JIRA_BASE_URL/browse/$XRAY_TEST_EXECUTION)" >> "$GITHUB_STEP_SUMMARY"
 
       # =====================================================
       # FINAL PLAYWRIGHT STATUS
