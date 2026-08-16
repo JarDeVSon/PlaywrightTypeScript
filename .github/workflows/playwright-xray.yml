@@ -60,6 +60,7 @@ on:
       grep:
         description: "Optional Playwright grep/tag"
         required: false
+        default: ""
         type: choice
         options:
           - smoke
