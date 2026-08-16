@@ -60,7 +60,7 @@ on:
       grep:
         description: "Optional Playwright grep/tag"
         required: false
-        default: "smoke"
+        default: ""
         type: string
 
 # ===========================================================
