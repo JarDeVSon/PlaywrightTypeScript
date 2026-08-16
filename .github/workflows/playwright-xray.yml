@@ -99,7 +99,7 @@ jobs:
       # NODE.JS
       # =====================================================
       - name: Setup Node.js
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v1
         with:
           node-version: 15
           cache: npm
