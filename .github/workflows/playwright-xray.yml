@@ -101,7 +101,7 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 22
+          node-version: 15
           cache: npm
 
       # =====================================================
@@ -264,16 +264,17 @@ jobs:
       - name: Import results to Xray
         id: xray
         if: always()
-        uses: mikepenz/xray-action@v4
+        uses: mikepenz/xray-action@v3.1.1
         with:
           username: ${{ secrets.XRAYCLOUD_CLIENT_ID }}
           password: ${{ secrets.XRAYCLOUD_CLIENT_SECRET }}
-          #xrayCloud: "true"
-          #xrayBaseUrl: ${{ vars.XRAYCLOUD_BASE_URL }}
+          xrayCloud: "true"
+          xrayBaseUrl: ${{ vars.XRAYCLOUD_BASE_URL }}
           testFormat: "junit"
           testPaths: "xray-report.xml"
           projectKey: "${{ inputs.projectKey }}"
           testExecKey: "${{ inputs.testExecutionKey }}"
+          testEnvironments: "${{ inputs.environment }}"
 
       # =====================================================
       # XRAY RESULT
