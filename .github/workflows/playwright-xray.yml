@@ -108,7 +108,7 @@ jobs:
       # INSTALL DEPENDENCIES
       # =====================================================
       - name: Install dependencies
-        run: npm ci
+        run: npm i
 
       # =====================================================
       # INSTALL CHROMIUM ONLY
