@@ -9,8 +9,8 @@
     "test:report": "npx playwright show-report",
     "test:web": "npx playwright test --project=web",
     "test:api": "npx playwright test --project=api",
-    "test:visual": "cross-env BASE_URL=https://debs-obrien.github.io/playwright-api-mocking npx playwright test --project=visual",
-    "test:accessibility": "cross-env BASE_URL=https://debs-obrien.github.io/playwright-api-mocking npx playwright test --project=accessibility"
+    "test:visual": "cross-env BASE_URL=https://debs-obrien.github.io/playwright-api-mocking PLAYWRIGHT_JUNIT_OUTPUT_NAME=xray-report.xml npx playwright test --project=visual",
+    "test:accessibility": "cross-env BASE_URL=https://debs-obrien.github.io/playwright-api-mocking PLAYWRIGHT_JUNIT_OUTPUT_NAME=xray-report.xml npx playwright test --project=accessibility"
   },
   "keywords": [],
   "author": "",
