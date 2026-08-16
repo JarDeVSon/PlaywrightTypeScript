@@ -172,13 +172,11 @@ jobs:
 
           if [ -n "${{ inputs.grep }}" ]; then
             echo "Grep: ${{ inputs.grep }}"
-            npx playwright test \
-              PLAYWRIGHT_JUNIT_OUTPUT_NAME=xray-report.xml \
+            PLAYWRIGHT_JUNIT_OUTPUT_NAME=xray-report.xml npx playwright test \
               --project="$TEST_SUITE" \
               --grep "${{ inputs.grep }}"
           else
-            npx playwright test \
-              PLAYWRIGHT_JUNIT_OUTPUT_NAME=xray-report.xml \
+            PLAYWRIGHT_JUNIT_OUTPUT_NAME=xray-report.xml npx playwright test \
               --project="$TEST_SUITE"
           fi
 
