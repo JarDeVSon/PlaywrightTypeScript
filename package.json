@@ -17,7 +17,10 @@
   "license": "ISC",
   "devDependencies": {
     "@axe-core/playwright": "^4.12.1",
-    "@playwright/test": "^1.62.1",
+    "@playwright/test": "^1.32.2",
+    "@xray-app/playwright-junit-reporter": "^0.1.2",
+    "playwright": "^1.32.2",
+    "playwright-core": "^1.32.2",
     "@types/node": "^20.8.8",
     "axe-html-reporter": "^2.2.11",
     "cross-env": "^10.1.0",

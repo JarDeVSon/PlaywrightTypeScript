@@ -47,7 +47,7 @@ export default defineConfig({
   /* Reporter to use. See https://playwright.dev/docs/test-reporters */
   reporter: [
     ["html", { open: "never" }],
-    ['junit', xrayOptions],
+    ['@xray-app/playwright-junit-reporter', xrayOptions],
   ],
   expect: {
     toHaveScreenshot: {
