@@ -173,10 +173,12 @@ jobs:
           if [ -n "${{ inputs.grep }}" ]; then
             echo "Grep: ${{ inputs.grep }}"
             npx playwright test \
+              PLAYWRIGHT_JUNIT_OUTPUT_NAME=xray-report.xml \
               --project="$TEST_SUITE" \
               --grep "${{ inputs.grep }}"
           else
             npx playwright test \
+              PLAYWRIGHT_JUNIT_OUTPUT_NAME=xray-report.xml \
               --project="$TEST_SUITE"
           fi
 
@@ -221,40 +223,40 @@ jobs:
           echo "=============================================="
           echo "TESTANDO IMPORTAÇÃO DIRETA NA API DO XRAY (DEBUG)"
           echo "=============================================="
-          
+
           # 1. Obter Token OAuth2
           TOKEN_RESPONSE=$(curl -s -H "Content-Type: application/json" \
             -X POST \
             --data "{\"client_id\": \"${{ secrets.XRAYCLOUD_CLIENT_ID }}\", \"client_secret\": \"${{ secrets.XRAYCLOUD_CLIENT_SECRET }}\"}" \
             https://xray.cloud.getxray.app/api/v2/authenticate)
-          
+
           # Limpa as aspas do token retornado
           TOKEN=$(echo $TOKEN_RESPONSE | tr -d '"')
-          
+
           if [ -z "$TOKEN" ] || [[ "$TOKEN" == *"error"* ]]; then
             echo "::error::Falha ao autenticar no Xray Cloud. Resposta: $TOKEN_RESPONSE"
             exit 1
           fi
-          
+
           echo "Autenticação no Xray realizada com sucesso!"
-          
+
           # 2. Montar URL com parâmetros (sem testPlanKey para Xray Standard)
           URL="https://xray.cloud.getxray.app/api/v2/import/execution/junit?projectKey=$XRAY_PROJECT_KEY"
-          
+
           if [ -n "$XRAY_TEST_EXECUTION" ]; then
             URL="${URL}&testExecKey=${XRAY_TEST_EXECUTION}"
           fi
-          
+
           echo "Endpoint chamado: $URL"
           echo "Resposta detalhada da API do Jira/Xray:"
           echo "----------------------------------------------"
-          
+
           # 3. Disparar importação com payload XML bruto
           curl -v -H "Authorization: Bearer $TOKEN" \
             -H "Content-Type: text/xml" \
             --data-binary @"xray-report.xml" \
             "$URL"
-          
+
           echo ""
           echo "----------------------------------------------"
 
@@ -268,7 +270,7 @@ jobs:
         with:
           username: ${{ secrets.XRAYCLOUD_CLIENT_ID }}
           password: ${{ secrets.XRAYCLOUD_CLIENT_SECRET }}
-          #xrayCloud: "true"  
+          #xrayCloud: "true"
           #xrayBaseUrl: ${{ vars.XRAYCLOUD_BASE_URL }}
           testFormat: "junit"
           testPaths: "xray-report.xml"
@@ -309,11 +311,11 @@ jobs:
           echo "" >> "$GITHUB_STEP_SUMMARY"
           echo "## Xray" >> "$GITHUB_STEP_SUMMARY"
           echo "" >> "$GITHUB_STEP_SUMMARY"
-          
+
           if [ -n "$XRAY_TEST_PLAN" ]; then
             echo "[Open Test Plan]($JIRA_BASE_URL/browse/$XRAY_TEST_PLAN)" >> "$GITHUB_STEP_SUMMARY"
           fi
-          
+
           if [ -n "$XRAY_TEST_EXECUTION" ]; then
             echo "" >> "$GITHUB_STEP_SUMMARY"
             echo "[Open Test Execution]($JIRA_BASE_URL/browse/$XRAY_TEST_EXECUTION)" >> "$GITHUB_STEP_SUMMARY"
