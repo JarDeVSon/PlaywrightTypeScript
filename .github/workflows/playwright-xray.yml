@@ -266,7 +266,7 @@ jobs:
       - name: Import results to Xray
         id: xray
         if: always()
-        uses: mikepenz/xray-action@v4
+        uses: mikepenz/xray-action@4.1.1
         with:
           username: ${{ secrets.XRAYCLOUD_CLIENT_ID }}
           password: ${{ secrets.XRAYCLOUD_CLIENT_SECRET }}
