@@ -276,7 +276,7 @@ jobs:
           testPaths: "xray-report.xml"
           projectKey: "${{ inputs.projectKey }}"
           testExecKey: "${{ inputs.testExecutionKey }}"
-          testEnvironments: "${{ inputs.environment }}"
+          
 
       # =====================================================
       # XRAY RESULT
