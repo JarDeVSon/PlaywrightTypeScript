@@ -9,6 +9,22 @@ const baseURL = process.env.BASE_URL;
 if (!baseURL) {
   throw new Error("BASE_URL environment variable is required.");
 }
+// JUnit reporter config for Xray
+const xrayOptions = {
+  // Whether to add <properties> with all annotations; default is false
+  embedAnnotationsAsProperties: true,
+
+  // By default, annotation is reported as <property name='' value=''>.
+  // These annotations are reported as <property name=''>value</property>.
+  textContentAnnotations: ['test_description'],
+
+  // This will create a "testrun_evidence" property that contains all attachments. Each attachment is added as an inner <item> element.
+  // Disables [[ATTACHMENT|path]] in the <system-out>.
+  embedAttachmentsAsProperty: 'testrun_evidence',
+
+  // Where to put the report.
+  outputFile: './xray-report.xml'
+};
 
 require("dotenv").config();
 
@@ -21,7 +37,7 @@ export default defineConfig({
   /* Timeout global*/
   timeout: 30000,
   /* Run tests in files in parallel */
-  fullyParallel: false,
+  fullyParallel: true,
   /* Fail the build on CI if you accidentally left test.only in the source code. */
   forbidOnly: !!process.env.CI,
   /* Retry on CI only */
@@ -31,7 +47,7 @@ export default defineConfig({
   /* Reporter to use. See https://playwright.dev/docs/test-reporters */
   reporter: [
     ["html", { open: "never" }],
-    ["junit", { outputFile: "xray-report.xml" }],
+    ['@xray-app/playwright-junit-reporter', xrayOptions],
   ],
   expect: {
     toHaveScreenshot: {
