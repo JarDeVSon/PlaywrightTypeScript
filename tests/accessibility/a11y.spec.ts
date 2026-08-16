@@ -28,11 +28,6 @@ test("example accessibility scan with attachment [XSP5-58] @smoke", async ({
     type: "test_summary",
     description: test.info().title,
   });
-  // testInfo.annotations.push({ type: "requirements", description: "XT-41" });
-  // testInfo.annotations.push({
-  //   type: "test_description",
-  //   description: test.info().title,
-  // });
   // Capture a screenshot and attach it.
   const path = testInfo.outputPath("tmp_screenshot.png");
   await page.screenshot({ path });

@@ -16,14 +16,14 @@ const xrayOptions = {
 
   // By default, annotation is reported as <property name='' value=''>.
   // These annotations are reported as <property name=''>value</property>.
-  textContentAnnotations: ['test_description'],
+  textContentAnnotations: ["test_description"],
 
   // This will create a "testrun_evidence" property that contains all attachments. Each attachment is added as an inner <item> element.
   // Disables [[ATTACHMENT|path]] in the <system-out>.
-  embedAttachmentsAsProperty: 'testrun_evidence',
+  embedAttachmentsAsProperty: "testrun_evidence",
 
   // Where to put the report.
-  outputFile: './xray-report.xml'
+  outputFile: "./xray-report.xml",
 };
 
 require("dotenv").config();
@@ -47,7 +47,7 @@ export default defineConfig({
   /* Reporter to use. See https://playwright.dev/docs/test-reporters */
   reporter: [
     ["html", { open: "never" }],
-    ['@xray-app/playwright-junit-reporter', xrayOptions],
+    ["@xray-app/playwright-junit-reporter", xrayOptions],
   ],
   expect: {
     toHaveScreenshot: {
@@ -116,8 +116,6 @@ export default defineConfig({
         ...devices["Desktop Chrome"],
       },
     },
-
-
   ],
 
   /* Run your local dev server before starting the tests */

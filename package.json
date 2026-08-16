@@ -9,18 +9,16 @@
     "test:report": "npx playwright show-report",
     "test:web": "npx playwright test --project=web",
     "test:api": "npx playwright test --project=api",
-    "test:visual": "cross-env BASE_URL=https://debs-obrien.github.io/playwright-api-mocking PLAYWRIGHT_JUNIT_OUTPUT_NAME=xray-report.xml npx playwright test --project=visual",
-    "test:accessibility": "cross-env BASE_URL=https://debs-obrien.github.io/playwright-api-mocking PLAYWRIGHT_JUNIT_OUTPUT_NAME=xray-report.xml npx playwright test --project=accessibility"
+    "test:visual": "cross-env BASE_URL=https://debs-obrien.github.io/playwright-api-mocking PLAYWRIGHT_JUNIT_OUTPUT_NAME=xray-report.xml npx playwright test --project=visual --reporter=@xray-app/playwright-junit-reporter",
+    "test:accessibility": "cross-env BASE_URL=https://debs-obrien.github.io/playwright-api-mocking PLAYWRIGHT_JUNIT_OUTPUT_NAME=xray-report.xml npx playwright test --project=accessibility --reporter=@xray-app/playwright-junit-reporter"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
     "@axe-core/playwright": "^4.12.1",
-    "@playwright/test": "^1.32.2",
-    "@xray-app/playwright-junit-reporter": "^0.1.2",
-    "playwright": "^1.32.2",
-    "playwright-core": "^1.32.2",
+    "@playwright/test": "^1.49.0",
+    "@xray-app/playwright-junit-reporter": "github:xray-app/playwright-junit-reporter",
     "@types/node": "^20.8.8",
     "axe-html-reporter": "^2.2.11",
     "cross-env": "^10.1.0",
