@@ -4,27 +4,6 @@ import { defineConfig, devices } from "@playwright/test";
  * Read environment variables from file.
  * https://github.com/motdotla/dotenv
  */
-const baseURL = process.env.BASE_URL;
-
-if (!baseURL) {
-  throw new Error("BASE_URL environment variable is required.");
-}
-// JUnit reporter config for Xray
-const xrayOptions = {
-  // Whether to add <properties> with all annotations; default is false
-  embedAnnotationsAsProperties: true,
-
-  // By default, annotation is reported as <property name='' value=''>.
-  // These annotations are reported as <property name=''>value</property>.
-  textContentAnnotations: ["test_description"],
-
-  // This will create a "testrun_evidence" property that contains all attachments. Each attachment is added as an inner <item> element.
-  // Disables [[ATTACHMENT|path]] in the <system-out>.
-  embedAttachmentsAsProperty: "testrun_evidence",
-
-  // Where to put the report.
-  outputFile: "./xray-report.xml",
-};
 
 require("dotenv").config();
 
@@ -47,7 +26,7 @@ export default defineConfig({
   /* Reporter to use. See https://playwright.dev/docs/test-reporters */
   reporter: [
     ["html", { open: "never" }],
-    ["@xray-app/playwright-junit-reporter", xrayOptions],
+    ["junit", { outputFile: "test-results/junit-report.xml" }],
   ],
   expect: {
     toHaveScreenshot: {
@@ -59,14 +38,15 @@ export default defineConfig({
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
   use: {
     /* Base URL to use in actions like `await page.goto('/')`. */
-    baseURL,
+    baseURL: process.env.BASE_URL,
 
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
     launchOptions: {
-      slowMo: 100,
+      slowMo: 500,
     },
     trace: "on-first-retry",
     screenshot: "only-on-failure",
+    video: "on",
     actionTimeout: 30000,
   },
 
