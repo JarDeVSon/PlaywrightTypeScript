@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "npx playwright test",
-    "test:update:baseline": "cross-env BASE_URL=https://debs-obrien.github.io/playwright-api-mocking npx playwright test tests/visual/visual.spec.ts --update-snapshots",
+    "test:update:baseline": "npx playwright test tests/visual/visual.spec.ts --update-snapshots",
     "test:report": "npx playwright show-report",
     "test:web": "npx playwright test --project=web",
     "test:api": "npx playwright test --project=api",

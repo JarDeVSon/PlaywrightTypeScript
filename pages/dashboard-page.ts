@@ -1,7 +1,7 @@
 import { Page } from "@playwright/test";
 import { DashboardLocator } from "../locators/dashboard-locator";
 
-let dashboardLocator;
+let dashboardLocator: any;
 
 export class DashboardPage {
   page: Page;

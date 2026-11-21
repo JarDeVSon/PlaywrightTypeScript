@@ -1,7 +1,7 @@
 import { Page } from "@playwright/test";
 import { LoginLocator } from "../locators/login-locator";
 
-let loginLocator;
+let loginLocator: any;
 
 export class LoginPage {
   page: Page;
@@ -14,10 +14,10 @@ export class LoginPage {
     await loginLocator.base_url;
   }
   
-  async username(username){
+  async username(username: string){
     await loginLocator.username.fill(username)
   }
-  async password(password){
+  async password(password: string){
     await loginLocator.password.fill(password)
   }
   async btn_login(){
