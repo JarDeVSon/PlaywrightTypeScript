@@ -47,7 +47,7 @@ export default defineConfig({
       slowMo: 500,
     },
     trace: "on-first-retry",
-    screenshot: "only-on-failure",
+    screenshot: "on",
     video: "on",
     actionTimeout: 30000,
 
