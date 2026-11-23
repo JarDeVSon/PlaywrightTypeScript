@@ -21,7 +21,7 @@ export default defineConfig({
   forbidOnly: !!process.env.CI,
   /* Retry on CI only */
   retries: process.env.CI ? 0 : 0,
-  /* Opt out of parallel tests on CI. */
+  /* Opt out of parallel tests on CI. */  
   workers: process.env.CI ? undefined : undefined,
   /* Reporter to use. See https://playwright.dev/docs/test-reporters */
   reporter: [
@@ -30,13 +30,15 @@ export default defineConfig({
   ],
   expect: {
     toHaveScreenshot: {
-      maxDiffPixelRatio: 0.05, // Tolera até 5% de variação de pixels
-      threshold: 0.2, // Sensibilidade de cor do pixel
-      animations: "allow", // Desativa animações durante a captura de tela
+      maxDiffPixelRatio: 0.05, // Tolerates up to 5% pixel variation
+      threshold: 0.2, // Pixel color sensitivity
+      animations: "allow", // Allows animations during screenshot capture
     },
   },
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
   use: {
+    /** Whether to run tests in headless mode (true for headless, false for headed) */
+    headless: false,
     /* Base URL to use in actions like `await page.goto('/')`. */
     baseURL: process.env.BASE_URL,
 
@@ -61,8 +63,30 @@ export default defineConfig({
       testDir: "./tests/web",
       use: {
         ...devices["Desktop Chrome"],
+        ...devices["Desktop Firefox"],
+        ...devices["Desktop Safari"],
       },
     },
+    
+    /* Test against mobile viewports. when needed, uncomment the following sections */
+    // {
+    //   name: 'Mobile Chrome',
+    //   use: { ...devices['Pixel 5'] },
+    // },
+    // {
+    //   name: 'Mobile Safari',
+    //   use: { ...devices['iPhone 12'] },
+    // },
+
+    /* Test against branded browsers. */
+    // {
+    //   name: 'Microsoft Edge',
+    //   use: { ...devices['Desktop Edge'], channel: 'msedge' },
+    // },
+    // {
+    //   name: 'Google Chrome',
+    //   use: { ...devices['Desktop Chrome'], channel: 'chrome' },
+    // },
 
     // ======================================================
     // API
@@ -94,6 +118,9 @@ export default defineConfig({
       testDir: "./tests/accessibility",
       use: {
         ...devices["Desktop Chrome"],
+        /* Test against other browsers when needed, uncomment the following sections */
+        // ...devices["Desktop Firefox"],
+        // ...devices["Desktop Safari"],
       },
     },
   ],
