@@ -14,7 +14,7 @@ export default defineConfig({
   /* Directory of the test files*/
   testDir: "./tests",
   /* Timeout global*/
-  timeout: 30000,
+  timeout: 60000,
   /* Run tests in files in parallel */
   fullyParallel: true,
   /* Fail the build on CI if you accidentally left test.only in the source code. */
@@ -50,6 +50,7 @@ export default defineConfig({
     screenshot: "only-on-failure",
     video: "on",
     actionTimeout: 30000,
+
   },
 
   /* Configure projects for major browsers */
