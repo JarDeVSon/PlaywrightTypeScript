@@ -8,8 +8,8 @@ test.describe("Suite de testes API Gorest", async () => {
   test("GET ALL API Request", async ({ request }) => {
     const response = await request.get("https://gorest.co.in/public/v2/users");
 
-    console.log(response);
-    console.log("Status obtido: " + response.status());
+    console.log(await response.json());
+    console.log(await response);
     expect(response.status()).toBe(200);
   });
 
@@ -22,15 +22,15 @@ test.describe("Suite de testes API Gorest", async () => {
           Authorization: `Bearer ${token}`,
           "Content-Type": "application/json",
         },
-      }
+      },
     );
 
-    console.log(response);
-    console.log("Status obtido: " + response.status());
+    console.log(await response.json());
+    console.log(await response);
     expect(response.status()).toBe(201);
     let responseBody = await response.json();
     id = responseBody.id;
-    console.log("ID obtido: " + id);
+    console.log("ID obtained: " + id);
   });
 
   test("GET ONE SINGLE API Request", async ({ request }) => {
@@ -41,11 +41,12 @@ test.describe("Suite de testes API Gorest", async () => {
           Authorization: `Bearer ${token}`,
           "Content-Type": "application/json",
         },
-      }
+      },
     );
 
-    console.log(response);
-    console.log("Status obtido: " + response.status());
+    console.log(await response.json());
+    console.log(await response);
+    console.log("ID obtained: " + id);
     expect(response.status()).toBe(200);
   });
   test("PUT API Request", async ({ request }) => {
@@ -53,20 +54,22 @@ test.describe("Suite de testes API Gorest", async () => {
       `https://gorest.co.in/public/v2/users/${id}`,
       {
         data: {
-          name: "RepetecojPeUT4qaswqqw1",
-          email: "letsgo12ke231@gmail.com",
-          gender: "male",
+          name: "RepetecoPUT",
+          email: "PUT@gmail.com",
+          gender: "female",
           status: "active",
         },
         headers: {
           Authorization: `Bearer ${token}`,
           "Content-Type": "application/json",
         },
-      }
+      },
     );
 
-    console.log(response);
-    console.log("Status obtido: " + response.status());
+    console.log(await response.json());
+    console.log(await response);
+    console.log("ID obtained: " + id);
+
     expect(response.status()).toBe(200);
   });
 
@@ -78,10 +81,10 @@ test.describe("Suite de testes API Gorest", async () => {
           Authorization: `Bearer ${token}`,
           "Content-Type": "application/json",
         },
-      }
+      },
     );
-    console.log(response);
-    console.log("Status obtido: " + response.status());
+    console.log("ID used: " + id);
+    console.log(await response);
     expect(response.status()).toBe(204);
   });
 });

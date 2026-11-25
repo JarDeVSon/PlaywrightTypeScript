@@ -48,7 +48,7 @@ export default defineConfig({
     },
     trace: "on-first-retry",
     screenshot: "on",
-    video: "on",
+    video: "retain-on-failure",
     actionTimeout: 30000,
 
   },
